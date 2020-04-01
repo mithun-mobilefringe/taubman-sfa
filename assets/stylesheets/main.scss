@@ -1,0 +1,945 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,700,600");
+@import url("https://fonts.googleapis.com/css?family=EB+Garamond|Open+Sans+Condensed:300,300i,700");
+
+/*overall layout*/
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    background: #e5edf5 url('../img/bg.png') no-repeat fixed center top;
+    margin-bottom: 250px;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 300;
+}
+
+.container {
+    max-width: 1355px;
+}
+
+.canvass {
+    position: relative;
+}
+
+.decoration {
+    position: absolute;
+}
+
+.decoration.santa {
+    min-height: 485px;
+    background: url('../img/decor1.png') no-repeat right top;
+    right: 0;
+    width: 220px;
+    z-index: 11;
+}
+
+.decoration.logo {
+    min-height: 363px;
+    background: url('../img/md-logo.png') no-repeat left 62px;
+    left: 0;
+    width: 344px;
+    z-index: 20;
+}
+
+.main {
+    background: url('../img/topbar.png') repeat-x center top;
+    min-height: 63px;
+    z-index: 10;
+    position: relative;
+    overflow: hidden;
+}
+
+.app-title {
+    background: url('../img/green-ribbon.png') no-repeat center top;
+    min-height: 126px;
+    max-width: 430px;
+    margin: 38px auto 0;
+    text-align: center;
+    padding-top: 5px;
+}
+
+.app-body {
+    max-width: 540px;
+    margin: 0 auto;
+}
+
+.app-lead {
+    margin: 0 5px;
+    color: #007c5a;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.green-form {
+    background: #8eb8a3;
+    border-radius: 0.50rem;
+    padding: 10px;
+    color: #fff;
+    box-shadow: 0 15px 0 rgba(0, 0, 0, 0.10);
+    margin-bottom: 24px;
+}
+
+.instructions {
+    text-align: center;
+}
+
+.green-form p {
+    line-height: 120%;
+    font-size: 14px;
+}
+
+p.lead {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 10px;
+    line-height: 18px;
+}
+
+.fa-1_2x {
+    font-size: 1.5em;
+}
+
+.semi-round .input-group-addon {
+    border-top-left-radius: 0.8rem;
+    border-bottom-left-radius: 0.8rem;
+    color: #a7a7a7;
+}
+
+.input-group.semi-round .form-control {
+    border-top-right-radius: 0.8rem;
+    border-bottom-right-radius: 0.8rem;
+    padding-left: 0;
+}
+
+body:nth-of-type(1) input[type="checkbox"] {
+    display: none;
+}
+
+body:nth-of-type(1) input[type="checkbox"]+label::before {
+    content: "\00a0";
+    background: url('../img/checkbox-bg.png') no-repeat center center;
+    background-size: cover;
+    height: 32px;
+    width: 32px;
+    display: inline-block;
+    font-size: 24px;
+    line-height: 30px;
+    margin-right: 10px;
+    padding: 0 0 0 0px;
+    text-align: center;
+    font-weight: bold;
+    color: #4e9dd6;
+}
+
+.final-box a {
+    color: #007c5a;
+}
+
+body:nth-of-type(1) input[type="checkbox"]:checked+label:before {
+    content: "\002714";
+    /* character: "times" symbol (and "x") */
+}
+
+.app-check-label {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+}
+
+.app-check-label span {
+    display: inline-block;
+    /* margin-left: 40px; */
+    top: 0;
+    position: absolute;
+    line-height: 15px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.app-check-label span a {
+    color: black;
+}
+
+a {
+    text-decoration: underline;
+}
+
+.btn-step {
+    font-size: 28px;
+    color: #fff;
+    background: #4e9dd6;
+    padding: 15px 100px;
+    font-weight: bold;
+    border-radius: 3rem;
+    box-shadow: 0 15px 0 rgba(0, 0, 0, 0.10);
+    margin-bottom: 20px;
+}
+
+.btn-step.md {
+    padding: 10px 20px;
+    font-weight: bold;
+    box-shadow: 0 15px 0 rgba(0, 0, 0, 0.10);
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    line-height: 60px;
+    /* Vertically center the text there */
+    background-color: #ecfefe;
+}
+
+.footer a {
+    font-weight: bold;
+    display: inline-block;
+    padding: 0 5px;
+    line-height: 60px;
+    color: #6abaad;
+}
+
+.before-footer {
+    position: absolute;
+    width: 100%;
+    height: 250px;
+    background: url('../img/foot-bg.png') no-repeat center 13px;
+    bottom: 0;
+    /* top: 0; */
+}
+
+.back-section {
+    position: absolute;
+    z-index: 50;
+}
+
+.btn-back {
+    background: #7f101f url('../img/back-arrow.png') no-repeat 10px center;
+    margin: 12px 0;
+    font-size: 16px;
+    font-weight: bold;
+    color: #cc253b;
+    padding-left: 30px;
+    line-height: 20px;
+}
+
+.btn {
+    cursor: pointer;
+}
+
+.green-box {
+    box-shadow: 0 15px 0 rgba(0, 0, 0, 0.10);
+    border-radius: 0.80rem;
+    border: 4px solid #01796f;
+    padding: 5px 0;
+    background: #fff;
+}
+
+.green-box .input-group-addon {
+    border: none;
+}
+
+.green-box .form-control {
+    border: none;
+}
+
+.green-text {
+    text-align: center;
+    color: #007c5a;
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 40px;
+}
+
+.step {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.step::before {
+    content: " ";
+    width: 100%;
+    height: 84px;
+    display: block;
+    z-index: 15;
+    position: absolute;
+    top: 71px;
+}
+
+.step-1::before {
+    background: url('../img/step-1.png') no-repeat center bottom;
+}
+
+.step-2::before {
+    background: url('../img/step-2.png') no-repeat center bottom;
+}
+
+.step-3::before {
+    background: url('../img/step-3.png') no-repeat center bottom;
+}
+
+.step-4::before {
+    background: url('../img/step-4.png') no-repeat center bottom;
+}
+
+.step-5::before {
+    background: url('../img/step-4.png') no-repeat center bottom;
+}
+
+.step-6::before {
+    background: url('../img/step-4.png') no-repeat center bottom;
+}
+
+.no-form {
+    margin: 0 15px;
+}
+
+.suits-bg {
+    background: url('../img/suits-bg.png') no-repeat center top;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.btn-select {
+    font-size: 27px;
+    color: #fff;
+    background: #4e9dd6;
+    padding: 15px 15px;
+    font-weight: bold;
+    border-radius: 3rem;
+    box-shadow: 0 15px 0 rgba(0, 0, 0, 0.10);
+    margin-bottom: 20px;
+}
+
+.select-container {
+    max-width: 320px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    min-height: 325px;
+}
+
+.select-container .selection {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    padding-top: 240px;
+    width: 175px;
+    cursor: pointer;
+}
+
+.selection.select-1 {
+    background: url('../img/suits.png') no-repeat 34px top;
+    left: 0px;
+}
+
+.selection.select-2 {
+    background: url('../img/suits.png') no-repeat -121px top;
+    right: 0px;
+}
+
+.selection.select-1:hover {
+    background: url('../img/suits-selected.png') no-repeat 34px top;
+}
+
+.selection.select-2:hover {
+    background: url('../img/suits-selected.png') no-repeat -121px top;
+}
+
+.photo-box {
+    background: url('../img/ElfPhotoPlaceholder_add_160.png') no-repeat center top;
+    border-radius: 0.8rem;
+    box-shadow: 0 15px 0 rgba(0, 0, 0, 0.10);
+    cursor: pointer;
+    display: inline-block;
+    margin-bottom: 20px;
+    min-height: 161px;
+    max-width: 160px;
+    overflow: hidden;
+    position: relative;
+    width: 160px;
+}
+
+.photo-box input[type=file] {
+    background-color: pink;
+    bottom: 0;
+    cursor: pointer;
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+}
+
+.photo-box .photo-container {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.muted-green {
+    color: #6abaad;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.btn-outline-green {
+    font-size: 28px;
+    color: #6abaad;
+    background: none;
+    padding: 10px 20px;
+    font-weight: bold;
+    border-radius: 3rem;
+    margin-bottom: 20px;
+    border: 2px solid #6abaad;
+}
+
+.btn-outline-puti {
+    font-size: 28px;
+    color: #fff;
+    background: none;
+    padding: 10px 20px;
+    font-weight: bold;
+    border-radius: 3rem;
+    margin-bottom: 20px;
+    border: 2px solid #fff;
+}
+
+.btn-outline-puti .fa {
+    font-size: 22px;
+}
+
+a.btn {
+    text-decoration: none;
+}
+
+.section-title {
+    font-size: 24px;
+    color: #d1dcc8;
+    text-align: left;
+}
+
+.edit-guide {
+    height: 177px;
+    width: 100%;
+    display: inline-block;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+    margin: 0 auto;
+    max-width: 164px;
+}
+
+.edit-guide-1 {
+    background-image: url('../img/edit-helper-george-b.png');
+}
+
+.edit-guide-2 {
+    background-image: url('../img/edit-helper-sparkle-b.png');
+}
+
+.edit-guide-3 {
+    background-image: url('../img/edit-helper-flash-b.png');
+}
+
+.active.edit-guide-1 {
+    background-image: url('../img/edit-helper-george-a.png');
+}
+
+.active.edit-guide-2 {
+    background-image: url('../img/edit-helper-sparkle-a.png');
+}
+
+.active.edit-guide-3 {
+    background-image: url('../img/edit-helper-flash-a.png');
+}
+
+.edit-suits {
+    height: 270px;
+    width: 100%;
+    max-width: 122px;
+    display: inline-block;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+    /* border: 1px solid #ccc; */
+}
+
+.edit-suits-1 {
+    background-image: url('../img/edit-suits1-b.png');
+}
+
+.edit-suits-2 {
+    background-image: url('../img/edit-suits2-b.png');
+}
+
+.edit-suits-2.active {
+    background-image: url('../img/edit-suits2-a.png');
+}
+
+.edit-suits-1.active {
+    background-image: url('../img/edit-suits1-a.png');
+}
+
+.page-instructions {
+    color: #007c5a;
+    font-size: 18px;
+}
+
+.bg-green {
+    background-color: #007c5a;
+}
+
+.text-green {
+    color: #007c5a;
+}
+
+.red-box {
+    background-color: #a11528;
+    padding: 20px 10px;
+    border-radius: 1rem;
+    color: #fff;
+    text-align: center;
+}
+
+.btn-white {
+    display: inline-block;
+    border: 2px solid #fff;
+    padding: 15px 35px;
+    font-size: 18px;
+    border-radius: 50px;
+}
+
+.create-badge {
+    background-image: url('../img/create-badge-bg.png');
+    width: 100%;
+    height: 179px;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-position: left top;
+    color: #fdf6e2;
+    position: relative;
+    padding: 15px 10px;
+}
+
+.create-badge a {
+    color: #fdf6e2;
+    text-decoration: none;
+    font-size: 22px;
+}
+
+.create-badge-text {
+    display: inline-block;
+    font-size: 20px;
+    margin-top: 12px;
+    vertical-align: top;
+    width: 113px;
+}
+
+.elfmodal .modal-body {
+    background-color: #007c5a;
+    padding: 20px;
+    border: 10px solid #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    color: #fff;
+    font-size: 30px;
+    text-align: center;
+}
+
+.elfmodal .modal-content {
+    border-radius: 20px;
+    overflow: hidden;
+    color: #fff;
+    max-width: 340px;
+    margin: 0 auto;
+    box-shadow: 0px 20px 0px rgba(0, 0, 0, 0.10);
+}
+
+.elfmodal .modal-text {
+    font-size: 22px;
+    line-height: 26px;
+    margin-bottom: 50px;
+}
+
+.elfmodal .btn-step {
+    padding: 10px 30px;
+    box-shadow: 0px 15px 0px rgba(0, 0, 0, 0.10);
+}
+
+.btn-step.white {
+    background: none;
+    border: 2px solid #fff;
+    box-shadow: none;
+}
+
+.elfhead {
+    background: url(../img/modal-bg.png) no-repeat center bottom;
+    width: 100%;
+    height: 120px;
+}
+
+.last-image-box {
+    max-height: 235px;
+    min-height: 235px;
+    vertical-align: middle;
+    display: block;
+    height: 100%;
+    line-height: 235px;
+}
+
+.form-error {
+    color: #900;
+    text-align: center;
+}
+
+
+/* Cadet Builder - Photo Uploader */
+
+#box_photo_uploader .dz-details,
+#box_photo_uploader .dz-progress,
+#box_photo_uploader .dz-error-message,
+#box_photo_uploader .dz-success-mark,
+#box_photo_uploader .dz-error-mark {
+    display: none;
+}
+
+
+/* /Cadet Builder - Photo Uploader */
+
+
+/* Cadet Builder - Choose Guide Elf */
+
+.guide-box {
+    position: relative;
+    text-align: center;
+}
+
+.guide-box .guide {
+    background-position: center top;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    height: 394px;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    background-size: contain;
+}
+
+.guide-box .guide.guide-bio-open {
+    /*background-position: -274px bottom;*/
+}
+
+.guide-box .guide.guide-george {
+    background-image: url('../img/GeorgeBadgeFront.png');
+}
+
+.guide-box .guide.guide-sparkle {
+    background-image: url('../img/SparkleBadgeFront.png');
+}
+
+.guide-box .guide.guide-flash {
+    background-image: url('../img/FlashBadgeFront.png');
+}
+
+.guide-box .guide.guide-flash.guide-bio-open {
+    background-image: url('../img/FlashBadgeBack.png');
+}
+
+.guide-box .guide.guide-sparkle.guide-bio-open {
+    background-image: url('../img/SparkleBadgeBack.png');
+}
+
+.guide-box .guide.guide-george.guide-bio-open {
+    background-image: url('../img/GeorgeBadgeBack.png');
+}
+
+.guide-box .guide .guide-bio-close {
+    background-image: url('../img/icon-guide-bio-close.png');
+    bottom: 110px;
+    display: none;
+    height: 48px;
+    left: 0;
+    margin: auto;
+    overflow: hidden;
+    position: absolute;
+    right: 0;
+    text-indent: -99999px;
+    width: 48px;
+}
+
+.guide-box .guide.guide-bio-open .guide-bio-close {
+    display: block;
+}
+
+.guide-box .btn-step {
+    box-sizing: border-box;
+    display: block;
+    left: 0;
+    margin: auto;
+    right: 0;
+    position: absolute;
+    top: 0;
+    width: 255px;
+}
+
+@media only screen and (min-width: 576px) {
+    .guide-box .guide.guide-bio-open .guide-bio-close {
+        display: none;
+    }
+    .guide-box .guide.guide-bio-open.guide-george {
+        background-image: url('../img/GeorgeBadgeFront.png');
+    }
+    .guide-box .guide.guide-bio-open.guide-sparkle {
+        background-image: url('../img/SparkleBadgeFront.png');
+    }
+    .guide-box .guide.guide-bio-open.guide-flash {
+        background-image: url('../img/FlashBadgeFront.png');
+    }
+    .guide-box .guide.guide-flash:hover {
+        background-image: url('../img/FlashBadgeBack.png');
+    }
+    .guide-box .guide.guide-sparkle:hover {
+        background-image: url('../img/SparkleBadgeBack.png');
+        margin-top: -1px;
+    }
+    .guide-box .guide.guide-george:hover {
+        background-image: url('../img/GeorgeBadgeBack.png');
+    }
+}
+
+
+/* /Cadet Builder - Choose Guide Elf */
+
+
+/* Cadet Builder - Badge Preview (Approval Screen) */
+
+.id-badge-container {
+    background: url('../img/badge-bg-flash-en.png') no-repeat center top;
+    position: relative;
+    min-height: 413px;
+    max-height: 413px;
+    overflow: hidden;
+    min-width: 260px;
+    max-width: 260px;
+    margin: 10px auto;
+}
+
+.id-badge-img {
+    background-image: url('../img/ElfPhotoPlaceholder_160.png');
+    /*background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center; */
+    background-position: 50% center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+    height: 150px;
+    left: 8px;
+    overflow: hidden;
+    position: absolute;
+    top: 94px;
+    width: 122px;
+}
+
+.id-badge-img-container {
+    background-position: 20% center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.id-badge-img img {
+    /* max-width: auto; */
+    height: 100%;
+    width: 100%;
+}
+
+.id-badge-name {
+    position: absolute;
+    left: 138px;
+    top: 109px;
+    text-align: left;
+}
+
+.id-badge-codename {
+    position: absolute;
+    left: 138px;
+    top: 168px;
+    text-align: left;
+}
+
+.id-badge-specialty {
+    position: absolute;
+    left: 140px;
+    top: 225px;
+    text-align: left;
+}
+
+.id-badge-mall {
+    position: absolute;
+    left: 163px;
+    top: 374px;
+    text-align: left;
+    color: #a11528;
+}
+
+
+/* /Cadet Builder - Badge Preview */
+
+
+/* Cadet Builder - Edit */
+
+.review-photo {
+    background-image: url('../img/ElfPhotoPlaceholder_160.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    flex-basis: 200px;
+    flex-grow: 0;
+    height: 200px;
+    margin: auto auto 20px auto;
+    width: 200px;
+}
+
+.review-photo-container {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+
+/* Cadet Builder - Edit */
+
+
+/* Cadets List */
+
+.ubadge-item {
+    padding: 5px;
+    background-color: #007c5a;
+    border-radius: 0.6rem;
+    color: #fff;
+    font-size: 16px;
+    min-height: 80px;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 5px;
+}
+
+.ubadge-item strong {
+    font-size: 18px;
+}
+
+.ubadge-picture {
+    background-image: url('../img/ElfPhotoPlaceholder_160.png');
+    background-position: 50% center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 70px;
+    left: 5px;
+    overflow: hidden;
+    position: absolute;
+    top: 5px;
+    width: 55px;
+}
+
+.ubadge-picture .ubadge-picture-container {
+    background-position: 20% center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.ubadge-info {
+    vertical-align: middle;
+    padding-left: 10px;
+    min-width: 320px;
+    max-width: 320px;
+    position: absolute;
+    left: 65px;
+    top: 5px;
+    margin: 10px 0;
+}
+
+.ubadge-action {
+    position: absolute;
+    right: 10px;
+    color: #fff;
+    margin: 0px 0;
+    width: 30px;
+}
+
+.ubadge-action a {
+    color: #fff;
+}
+
+
+/* /Cadets List */
+
+.tiny-elf {
+    background: url(../img/tiny-elf-red.png) no-repeat left top;
+    width: 77px;
+    height: 91px;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.plus-sign {
+    background: url(../img/plus-sign.png) no-repeat left top;
+    width: 77px;
+    height: 91px;
+    overflow: hidden;
+    display: inline-block;
+}
+
+a:hover .plus-sign {
+    background-position: left -88px;
+}
+
+.wider-canvass {
+    max-width: 1500px;
+}
+
+#box_welcome_back .green-form {
+    max-height: 100%;
+    min-height: 100%;
+}
+
+#privacy-link {
+    color: black;
+}
+
+.update-square {
+    margin-bottom: auto;
+}
+
+#btn_edit_badge_retake_photo {}
