@@ -2,7 +2,7 @@ const pkg = require('./package')
 
 const webpack = require('webpack')
 const axios = require('axios')
-const API_URL = "https://mallmaverick.com/api/v4/taubman/"
+const API_URL = "https://mallmaverick.com/api/v4/taubman/holiday"
 const MM_HOST = "https://halifaxcentre.mallmaverick.com"
 export default {
     mode: 'spa',
@@ -20,9 +20,12 @@ export default {
             { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
         ]
     },
+    server: {
+        port: 8000, // default: 3000
+    },
     /* Set your environment variables here */
     env: {
-        API_URL: API_URL,
+        API_URL: "http://localhost:3000/taubman/holiday",
         MM_HOST: MM_HOST
     },
     /*

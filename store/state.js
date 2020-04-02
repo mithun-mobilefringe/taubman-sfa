@@ -4,7 +4,9 @@ const state = {
         version: null
     },
     banners: null,
-    blogs: []
+    blogs: [],
+    property: null,
+    api_key: null
 }
 
 export default state

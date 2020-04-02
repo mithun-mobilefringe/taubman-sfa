@@ -1,9 +1,67 @@
 <template>
   <div>
+    Layout
+    <header-component></header-component>
     <nuxt />
+    <footer-component/>
   </div>
 </template>
-
+<script>
+import { mapGetters } from "vuex";
+export default {
+  data() {
+    return {
+      stickyMenu: false,
+      windowWidth: 0
+    };
+  },
+  components: {
+    headerComponent: () => import("~/components/headerComponent.vue"),
+    footerComponent: () => import("~/components/footerComponent.vue")
+  },
+  beforeRouteUpdate(to, from, next) {
+    this.$store.state.property_id = this.$route.params.property_id;
+    next();
+  },
+  created() {
+    window.addEventListener("scroll", this.enableStickyNavbar);
+    window.addEventListener("resize", this.getWindowWidth);
+    this.loadData();
+  },
+  computed: {
+    ...mapGetters(["property"])
+  },
+  methods: {
+    loadData: function () {
+      console.log("Mithun");
+      console.log("Property : " + this.$store.state.property_id);
+      
+    },
+    enableStickyNavbar(e) {
+      if (this.windowWidth > 468) {
+        if (window.pageYOffset >= 50) {
+          this.stickyMenu = true;
+        } else {
+          this.stickyMenu = false;
+        }
+      } else {
+        if (window.pageYOffset >= 100) {
+          this.stickyMenu = true;
+        } else {
+          this.stickyMenu = false;
+        }
+      }
+    },
+    getWindowWidth(e) {
+      this.windowWidth = window.innerWidth;
+    }
+  },
+  destroyed: function() {
+    window.removeEventListener("scroll", this.enableStickyNavbar);
+    window.removeEventListener("resize", this.getWindowWidth);
+  }
+};
+</script>
 <style>
 html {
   font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
