@@ -1,39 +1,32 @@
 <template>
   <div class="container">
-    <div>
-      <logo />
-      <h1 class="title">
-        taubman_sfa
-      </h1>
-      <h2 class="subtitle">
-        Santa Flight Academy for Taubman Sites
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
-    </div>
+    {{$t('welcome')}}
   </div>
 </template>
 
 <script>
 import Logo from '~/components/Logo.vue'
+import Vue from 'vue'
+import { mapGetters } from 'vuex'
+import moment from 'moment'
+import tz from 'moment-timezone'
 
 export default {
+  data: function() {
+    return {
+      property_id: "",
+      property: null
+    }
+  },
   components: {
     Logo
+  },
+  created() {
+    this.property = this.$store.state.property;
+    console.log("property in index : " + this.property);
+  },
+  computed: {
+    ...mapGetters(['property', 'timezone', 'locale'])
   }
 }
 </script>

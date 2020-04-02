@@ -12,14 +12,14 @@ export default {
   data() {
     return {
       stickyMenu: false,
-      windowWidth: 0
+      windowWidth: 0,
     };
   },
   components: {
     headerComponent: () => import("~/components/headerComponent.vue"),
     footerComponent: () => import("~/components/footerComponent.vue")
   },
-  beforeRouteUpdate(to, from, next) {
+  beforeRouteEnter(to, from, next) {
     this.$store.state.property_id = this.$route.params.property_id;
     next();
   },

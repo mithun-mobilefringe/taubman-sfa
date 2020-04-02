@@ -16,6 +16,12 @@ const mutations = {
         blogs
     }) {
         state.blogs = blogs;
+    },
+    [types.SET_LOCALE](state, {
+        lang
+    }) {
+        state.locale = lang
+        Cookies.set('locale', lang);
     }
 }
 

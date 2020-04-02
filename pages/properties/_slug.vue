@@ -20,10 +20,6 @@ export default {
   components: {
     //SocialSharing: () => import('vue-social-sharing'),
   },
-  beforeRouteUpdate(to, from, next) {
-    
-    next()
-  },
   created() {
     this.property_id = this.$route.params.slug;
     console.log("property id in slug : " + this.property_id);
@@ -33,6 +29,7 @@ export default {
           }).then(response => {
               this.property = response.data;
               this.$store.state.property = this.property;
+              this.$router.push('/');
           }, (error) => { 
             console.log("Error: " + error);
               //this.handleError(error,{type:'API',request:'getRequest',path:path});
