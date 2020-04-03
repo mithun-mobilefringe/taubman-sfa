@@ -11,7 +11,7 @@ html {
 body {
     /* Margin bottom by footer height */
     background: #e5edf5 url('../img/bg.png') no-repeat fixed center top;
-    margin-bottom: 250px;
+    //margin-bottom: 250px;
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
     font-weight: 300;
 }
@@ -54,9 +54,10 @@ body {
 
 .app-title {
     background: url('../img/green-ribbon.png') no-repeat center top;
+    width: 100%;
     min-height: 126px;
     max-width: 430px;
-    margin: 38px auto 0;
+    //margin: 38px auto 0;
     text-align: center;
     padding-top: 5px;
 }
@@ -64,6 +65,10 @@ body {
 .app-body {
     max-width: 540px;
     margin: 0 auto;
+}
+
+img {
+    width: 100%;
 }
 
 .app-lead {

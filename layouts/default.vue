@@ -1,6 +1,5 @@
 <template>
   <div>
-    Layout
     <header-component></header-component>
     <nuxt />
     <footer-component/>
@@ -33,8 +32,6 @@ export default {
   },
   methods: {
     loadData: function () {
-      console.log("Mithun");
-      console.log("Property : " + this.$store.state.property_id);
       
     },
     enableStickyNavbar(e) {

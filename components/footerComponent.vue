@@ -1,6 +1,12 @@
 <template>
   <div>
-    footer
+    <div class="before-footer">
+    </div>
+    <div class="footer text-center">
+      <a href="#">More Details</a>
+      <a href="#">Terms</a>
+      <a href="#">Privacy</a>
+    </div>
   </div>
 </template>
 

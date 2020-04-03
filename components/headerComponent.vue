@@ -1,24 +1,29 @@
 <template>
-<div>
-  Header
-</div>
+  <div>
+    <div class="main"></div>
+    <div class="header-container col-12">
+      <div class="col-md-3 md-logo display-mobile"></div>
+      <div class="ribbon col-12 col-md-6">
+        <div class="logo"></div>
+        <div class="app-title">
+          <img alt class="header-label" src="~/assets/img/t-join-crew.png"/>
+        </div>
+      </div>
+      <div class="header-santa col-md-3">
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters } from "vuex";
 export default {
-  transition: 'page',
-  components: {
-    
-  },
+  transition: "page",
+  components: {},
   data: function() {
-    return {
-      
-    }
+    return {};
   },
-  watch: {
-    
-  },
+  watch: {},
   computed: {
     /* ...mapGetters(['property', 'timezone', 'getTodayHours']) */
   },
@@ -26,18 +31,16 @@ export default {
     loadData: async function(id) {
       try {
       } catch (e) {
-        console.log('Error loading data: ' + e.message)
+        console.log("Error loading data: " + e.message);
       }
     },
-    close(e) {
-    },
+    close(e) {}
   },
   created() {
     this.loadData();
   },
-  beforeDestroy() {
-  }
-}
+  beforeDestroy() {}
+};
 </script>
 <style>
 @media (max-width: 768px) {
@@ -45,5 +48,61 @@ export default {
     display: flex;
     justify-content: center;
   }
+  .ribbon{
+    top: -60px !important;
+  }
 }
+@media(max-width:1024px) {
+.logo {
+    background: url("../assets/img/mobile-logo.png") no-repeat;
+    width: 100%;
+    min-height: 100px;
+    background-position: center;
+  }
+  .app-title {
+    height: 80px;
+    background-size: 100% 82px;
+  }
+}
+@media (min-width: 1025px) {
+  .md-logo {
+    background: url("../assets/img/md-logo.png") no-repeat;
+    width: 100%;
+    min-height: -webkit-fill-available;
+    z-index: 20;
+  }
+  .header-santa {
+    background: url("../assets/img/decor1.png") no-repeat;
+    width: 100%;
+    top: -65px;
+    z-index: 20;
+  }
+  
+
+  .ribbon-label {
+    position: absolute;
+    z-index: 21;
+    width: 40%;
+  }
+}
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+}
+.ribbon {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    top: -26px;
+    z-index: 20;
+  }
+  .header-green-ribbon {
+    width: 65%;
+    background: url("../assets/img/green-ribbon.png") no-repeat;
+    min-height: 80px;
+  }
+  .header-label {
+    width: 180px;
+  }
 </style>
