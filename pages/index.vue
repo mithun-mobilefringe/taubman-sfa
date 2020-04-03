@@ -14,15 +14,14 @@ import tz from 'moment-timezone'
 export default {
   data: function() {
     return {
-      property_id: "",
-      property: null
+      
     }
   },
   components: {
     Logo
   },
   created() {
-    this.property = this.$store.state.property;
+    //this.property = this.$store.state.property;
     console.log("property in index : " + this.property);
   },
   computed: {

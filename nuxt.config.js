@@ -57,7 +57,7 @@ export default {
         },
         '~/plugins/vue-paginate.js',
         '~/plugins/vee-validate.js',
-        //'~/plugins/main.js',
+        '~/plugins/main.js',
         '~/plugins/vue-smooth-scroll.js'
     ],
 

@@ -59,9 +59,9 @@ const actions = {
                     params: queryParams
                 }).then(response => {
                     switch (resource) {
-                        case "banners":
-                            commit(types.SET_BANNERS, {
-                                banners: response.data.banners
+                        case "property":
+                            commit(types.SET_PROPERTY, {
+                                banners: response.data
                             });
                             break;
                         case "blogs":
