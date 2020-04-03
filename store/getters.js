@@ -15,12 +15,11 @@ const getters = {
         return timezone;
     },
     property: state => state.property,
-    repos: state => state.repos
-        /* ,
-          locale: (state) => {
-            moment.locale(state.i18n.locale);
-            return state.i18n.locale;
-          },  */
+    repos: state => state.repos,
+    locale: (state) => {
+        moment.locale(state.i18n.locale);
+        return state.i18n.locale;
+    },
 }
 
 export default getters

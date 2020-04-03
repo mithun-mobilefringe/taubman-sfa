@@ -29,11 +29,12 @@
         "moment-range": "^4.0.1",
         "moment-timezone": "^0.5.21",
         "nuxt": "^2.3.4",
-        "nuxt-i18n": "^5.12.7",
+        "nuxt-i18n": "^5.4.1",
         "nuxt-vuex-router-sync": "^0.0.2",
         "vee-validate": "^2.1.4",
         "velocity-animate": "^1.5.2",
         "vue-checkbox-radio": "^0.6.0",
+        "vue-i18n": "^8.16.0",
         "vue-lazyload": "^1.2.6",
         "vue-masonry": "^0.11.7",
         "vue-paginate": "^3.6.0",
@@ -46,10 +47,10 @@
     },
     "devDependencies": {
         "cross-env": "^5.2.0",
-        "eslint-config-prettier": "^3.1.0",
+        "eslint-config-prettier": "^3.6.0",
         "eslint-plugin-prettier": "2.6.2",
-        "prettier": "1.14.3",
         "node-sass": "^4.9.2",
+        "prettier": "1.14.3",
         "sass-loader": "^7.0.3"
     }
 }

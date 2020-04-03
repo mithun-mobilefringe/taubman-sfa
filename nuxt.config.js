@@ -10,7 +10,7 @@ export default {
      ** Headers of the page
      */
     head: {
-        title: process.env.npm_package_name || '',
+        title: 'Santa Flight Academy',
         htmlAttrs: {
             lang: 'en-US',
         },
@@ -35,6 +35,17 @@ export default {
      ** Customize the progress-bar color
      */
     loading: { color: '#fff' },
+    router: {
+        scrollBehavior: function(to, from, savedPosition) {
+            if (!(to.query && to.query.type)) {
+                return {
+                    x: 0,
+                    y: 0
+                }
+            }
+        },
+        // middleware: ['redirect']
+    },
     /*
      ** Global CSS
      */
@@ -48,7 +59,6 @@ export default {
      */
     plugins: [
         '~/plugins/es6-shim.js',
-        //'~/plugins/init-data.js',
         '~/plugins/vue-moment.js',
         '~/plugins/vue-lazyload.js',
         {
@@ -57,7 +67,6 @@ export default {
         },
         '~/plugins/vue-paginate.js',
         '~/plugins/vee-validate.js',
-        '~/plugins/main.js',
         '~/plugins/vue-smooth-scroll.js'
     ],
 
@@ -90,18 +99,13 @@ export default {
                 cookieKey: 'i18n_redirected'
             },
             vueI18n: {
-                fallbackLocale: 'en',
+                fallbackLocale: 'en'
             },
             parsePages: false
         }],
         '@nuxtjs/google-analytics',
         '@nuxtjs/sitemap'
     ],
-    buildModules: [],
-    /*
-     ** Nuxt.js modules
-     */
-    modules: [],
     /* Build configuration */
     build: {
         /* You can extend webpack config here */

@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    {{$t('welcome')}}
+    {{$t('header.name')}}
   </div>
 </template>
 
@@ -10,6 +10,7 @@ import Vue from 'vue'
 import { mapGetters } from 'vuex'
 import moment from 'moment'
 import tz from 'moment-timezone'
+import Cookies from "js-cookie";
 
 export default {
   data: function() {
