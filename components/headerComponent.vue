@@ -9,7 +9,7 @@
           <img alt class="header-label" src="~/assets/img/t-join-crew.png"/>
         </div>
       </div>
-      <div class="header-santa col-md-3">
+      <div class="header-santa col-md-3 display-mobile">
       </div>
     </div>
   </div>
@@ -51,6 +51,7 @@ export default {
   .ribbon{
     top: -60px !important;
   }
+  
 }
 @media(max-width:1024px) {
 .logo {
@@ -63,20 +64,12 @@ export default {
     height: 80px;
     background-size: 100% 82px;
   }
+  .display-mobile {
+    display: none;
+  }
 }
-@media (min-width: 1025px) {
-  .md-logo {
-    background: url("../assets/img/md-logo.png") no-repeat;
-    width: 100%;
-    min-height: -webkit-fill-available;
-    z-index: 20;
-  }
-  .header-santa {
-    background: url("../assets/img/decor1.png") no-repeat;
-    width: 100%;
-    top: -65px;
-    z-index: 20;
-  }
+@media (min-width: 1024px) {
+  
   
 
   .ribbon-label {
@@ -87,7 +80,7 @@ export default {
 }
 .header-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   position: absolute;
 }
 .ribbon {
@@ -104,5 +97,17 @@ export default {
   }
   .header-label {
     width: 180px;
+  }
+  .md-logo {
+    background: url("../assets/img/md-logo.png") no-repeat;
+    width: 100%;
+    min-height: -webkit-fill-available;
+    z-index: 20;
+  }
+  .header-santa {
+    background: url("../assets/img/decor1.png") no-repeat;
+    width: 100%;
+    top: -65px;
+    z-index: 20;
   }
 </style>

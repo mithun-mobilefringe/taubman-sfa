@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" style="height:100vh">
     {{$t('header.name')}}
   </div>
 </template>
