@@ -6,7 +6,7 @@
       <div class="ribbon col-12 col-md-6">
         <div class="logo"></div>
         <div class="app-title">
-          <img alt class="header-label" src="~/assets/img/t-join-crew.png" />
+          <img alt class="header-label" :src="headerfile"/>
         </div>
       </div>
       <div class="header-santa col-md-3 display-mobile"></div>
@@ -19,8 +19,10 @@ import { mapGetters } from "vuex";
 export default {
   transition: "page",
   components: {},
+  props: ['headerfile'],
   data: function() {
-    return {};
+    return {
+    };
   },
   watch: {},
   computed: {
@@ -33,10 +35,13 @@ export default {
         console.log("Error loading data: " + e.message);
       }
     },
+    headerUpdate: function(fileName) {
+      this.headerfile = fileName;
+    },
     close(e) {}
   },
   created() {
-    this.loadData();
+    
   },
   beforeDestroy() {}
 };

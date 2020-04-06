@@ -1,6 +1,5 @@
 <template>
   <div>
-    <header-component></header-component>
     <nuxt />
     <footer-component/>
   </div>
@@ -12,6 +11,7 @@ export default {
     return {
       stickyMenu: false,
       windowWidth: 0,
+      headerfile: null
     };
   },
   components: {

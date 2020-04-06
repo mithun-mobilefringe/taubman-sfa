@@ -22,6 +22,11 @@ const mutations = {
     }) {
         state.locale = lang
         Cookies.set('locale', lang);
+    },
+    [types.SET_HEADERFILE](state, {
+        headerfile
+    }) {
+        state.headerfile = headerfile
     }
 }
 

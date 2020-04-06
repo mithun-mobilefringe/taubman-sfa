@@ -1,6 +1,6 @@
 <template>
   <div>
-    Slug property ID : {{property_id}}
+    
   </div>
 </template>
 
