@@ -63,7 +63,7 @@
         </div>
         <div class="clearfix"></div>
         <div class="app-step-btn">
-          <a href class="btn btn-step" data-ng-click="onNextClick($event)">Next</a>
+            <nuxt-link to="/badges" class="btn btn-step">Next</nuxt-link>
         </div>
       </div>
     </div>
