@@ -50,6 +50,10 @@ export default {
      ** Global CSS
      */
     css: [
+
+        '~/assets/stylesheets/bootstrap.min.css',
+        '~/assets/stylesheets/font-awesome.min.css',
+        '~/assets/stylesheets/mobile.scss',
         '~/assets/stylesheets/main.scss',
         '~/node_modules/vue2-animate/dist/vue2-animate.min.css',
     ],

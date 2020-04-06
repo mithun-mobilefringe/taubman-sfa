@@ -18,6 +18,34 @@ body {
 
 .container {
     max-width: 1355px;
+    min-height: 110vh;
+}
+
+.container {
+    margin: 0 auto;
+    min-height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+@media (max-width: 375px) {
+    .container {
+        margin-top: 100px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        margin-top: 70px;
+    }
+}
+
+@media (max-width: 375px) {
+    .container {
+        margin-top: 100px;
+    }
 }
 
 .canvass {
@@ -65,9 +93,15 @@ body {
 .app-body {
     max-width: 540px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
 }
 
 img {
+    width: 100%;
+}
+
+.app-step-btn a {
     width: 100%;
 }
 
@@ -149,15 +183,19 @@ body:nth-of-type(1) input[type="checkbox"]:checked+label:before {
     /* character: "times" symbol (and "x") */
 }
 
+.app-checkbox {
+    margin-bottom: 16px;
+}
+
 .app-check-label {
-    display: inline-block;
+    display: flex;
     position: relative;
     width: 100%;
 }
 
 .app-check-label span {
     display: inline-block;
-    /* margin-left: 40px; */
+    margin-left: 40px;
     top: 0;
     position: absolute;
     line-height: 15px;
@@ -210,7 +248,7 @@ a {
 }
 
 .before-footer {
-    position: absolute;
+    position: relative;
     width: 100%;
     height: 250px;
     background: url('../img/foot-bg.png') no-repeat center 13px;

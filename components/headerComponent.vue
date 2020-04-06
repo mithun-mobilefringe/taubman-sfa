@@ -6,11 +6,10 @@
       <div class="ribbon col-12 col-md-6">
         <div class="logo"></div>
         <div class="app-title">
-          <img alt class="header-label" src="~/assets/img/t-join-crew.png"/>
+          <img alt class="header-label" src="~/assets/img/t-join-crew.png" />
         </div>
       </div>
-      <div class="header-santa col-md-3 display-mobile">
-      </div>
+      <div class="header-santa col-md-3 display-mobile"></div>
     </div>
   </div>
 </template>
@@ -48,13 +47,13 @@ export default {
     display: flex;
     justify-content: center;
   }
-  .ribbon{
+  .ribbon {
     top: -60px !important;
   }
   
 }
-@media(max-width:1024px) {
-.logo {
+@media (max-width: 1024px) {
+  .logo {
     background: url("../assets/img/mobile-logo.png") no-repeat;
     width: 100%;
     min-height: 100px;
@@ -67,11 +66,11 @@ export default {
   .display-mobile {
     display: none;
   }
+  .header-label {
+  width: 180px !important;
+}
 }
 @media (min-width: 1024px) {
-  
-  
-
   .ribbon-label {
     position: absolute;
     z-index: 21;
@@ -84,30 +83,31 @@ export default {
   position: absolute;
 }
 .ribbon {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    top: -26px;
-    z-index: 20;
-  }
-  .header-green-ribbon {
-    width: 65%;
-    background: url("../assets/img/green-ribbon.png") no-repeat;
-    min-height: 80px;
-  }
-  .header-label {
-    width: 180px;
-  }
-  .md-logo {
-    background: url("../assets/img/md-logo.png") no-repeat;
-    width: 100%;
-    min-height: -webkit-fill-available;
-    z-index: 20;
-  }
-  .header-santa {
-    background: url("../assets/img/decor1.png") no-repeat;
-    width: 100%;
-    top: -65px;
-    z-index: 20;
-  }
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  top: -25px;
+  z-index: 20;
+}
+.header-green-ribbon {
+  width: 65%;
+  background: url("../assets/img/green-ribbon.png") no-repeat;
+  min-height: 80px;
+}
+.header-label {
+  width: 270px;
+}
+.md-logo {
+  background: url("../assets/img/md-logo.png") no-repeat;
+  width: 100%;
+  min-height: 320px;
+  z-index: 20;
+}
+.header-santa {
+  background: url("../assets/img/decor1.png") no-repeat;
+  width: 100%;
+  min-height: 350px;
+  top: -65px;
+  z-index: 20;
+}
 </style>
