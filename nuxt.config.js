@@ -53,8 +53,8 @@ export default {
 
         '~/assets/stylesheets/bootstrap.min.css',
         '~/assets/stylesheets/font-awesome.min.css',
-        '~/assets/stylesheets/mobile.scss',
         '~/assets/stylesheets/main.scss',
+        '~/assets/stylesheets/mobile.scss',
         '~/node_modules/vue2-animate/dist/vue2-animate.min.css',
     ],
 

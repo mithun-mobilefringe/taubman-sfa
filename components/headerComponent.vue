@@ -19,7 +19,7 @@ import { mapGetters } from "vuex";
 export default {
   transition: "page",
   components: {},
-  props: ['headerfile'],
+  //props: ['headerfile'],
   data: function() {
     return {
     };
@@ -27,6 +27,9 @@ export default {
   watch: {},
   computed: {
     /* ...mapGetters(['property', 'timezone', 'getTodayHours']) */
+    headerfile : function () {
+      return this.$store.state.headerfile
+    }
   },
   methods: {
     loadData: async function(id) {
@@ -86,6 +89,7 @@ export default {
   display: flex;
   justify-content: center;
   position: absolute;
+  padding: 0px;
 }
 .ribbon {
   display: flex;
@@ -93,6 +97,7 @@ export default {
   flex-direction: column;
   top: -25px;
   z-index: 20;
+  padding: 0px;
 }
 .header-green-ribbon {
   width: 65%;
@@ -107,6 +112,7 @@ export default {
   width: 100%;
   min-height: 320px;
   z-index: 20;
+  left: 30px;
 }
 .header-santa {
   background: url("../assets/img/decor1.png") no-repeat;
@@ -114,5 +120,6 @@ export default {
   min-height: 350px;
   top: -65px;
   z-index: 20;
+  left: 90px;
 }
 </style>

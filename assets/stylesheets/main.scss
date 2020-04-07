@@ -30,21 +30,15 @@ body {
     text-align: center;
 }
 
-@media (max-width: 375px) {
-    .container {
-        margin-top: 100px;
-    }
-}
-
 @media (max-width: 768px) {
     .container {
-        margin-top: 70px;
+        margin-top: 70px !important;
     }
 }
 
-@media (max-width: 375px) {
+@media (max-width: 414px) {
     .container {
-        margin-top: 100px;
+        margin-top: 100px !important;
     }
 }
 
@@ -301,40 +295,47 @@ a {
 
 .step {
     position: relative;
-    margin-bottom: 25px;
+    //margin-bottom: 25px;
 }
 
+.step,
 .step::before {
     content: " ";
     width: 100%;
     height: 84px;
     display: block;
     z-index: 15;
-    position: absolute;
-    top: 71px;
+    //position: absolute;
+    //top: 109px;
 }
 
-.step-1::before {
+.step-1::before,
+.step-1 {
     background: url('../img/step-1.png') no-repeat center bottom;
 }
 
-.step-2::before {
+.step-2::before,
+.step-2 {
     background: url('../img/step-2.png') no-repeat center bottom;
 }
 
-.step-3::before {
+.step-3::before,
+.step-3 {
     background: url('../img/step-3.png') no-repeat center bottom;
 }
 
-.step-4::before {
+.step-4::before,
+.step-4 {
     background: url('../img/step-4.png') no-repeat center bottom;
 }
 
-.step-5::before {
+.step-5::before,
+.step-5 {
     background: url('../img/step-4.png') no-repeat center bottom;
 }
 
-.step-6::before {
+.step-6::before,
+.step-6 {
     background: url('../img/step-4.png') no-repeat center bottom;
 }
 
@@ -578,6 +579,7 @@ a.btn {
     color: #fdf6e2;
     position: relative;
     padding: 15px 10px;
+    margin-bottom: 10px;
 }
 
 .create-badge a {
@@ -892,6 +894,7 @@ a.btn {
     overflow: hidden;
     position: relative;
     margin-bottom: 5px;
+    display: flex;
 }
 
 .ubadge-item strong {
@@ -925,7 +928,7 @@ a.btn {
 .ubadge-info {
     vertical-align: middle;
     padding-left: 10px;
-    min-width: 320px;
+    //min-width: 320px;
     max-width: 320px;
     position: absolute;
     left: 65px;
@@ -983,6 +986,39 @@ a:hover .plus-sign {
 
 .update-square {
     margin-bottom: auto;
+}
+
+@media (min-width: 1025px) {
+    .box-home {
+        margin-top: 75px;
+    }
+    .new-badge-container {
+        margin-top: 25px;
+    }
+    .create-new-badge-container {
+        margin-top: 46px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .new-badge-container {
+        margin-top: 121px !important;
+        display: flex;
+        justify-content: start;
+    }
+}
+
+@media (max-width: 768px) {
+    .new-badge-container {
+        margin-top: 86px !important;
+        display: flex;
+        justify-content: start;
+    }
+}
+
+.box-home {
+    flex-direction: column;
+    padding: 0px 5px !important;
 }
 
 #btn_edit_badge_retake_photo {}

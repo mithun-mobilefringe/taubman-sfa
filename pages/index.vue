@@ -1,6 +1,6 @@
 <template>
   <div>
-    <header-component :headerfile= headerFileName></header-component>
+    <!-- <header-component :headerfile= headerFileName></header-component> -->
     <!-- Join The Crew -->
     <div id="box_enter_email" class="container box_enter_email">
       <div class="app-body">
@@ -90,10 +90,9 @@ export default {
     };
   },
   components: {
-    headerComponent: () => import("~/components/headerComponent.vue"),
   },
   created() {
-    //this.property = this.$store.state.property;
+    this.$store.state.headerfile = require("~/assets/img/t-join-crew.png")
   },
   computed: {
     ...mapGetters(["property", "timezone", "locale"])
@@ -126,7 +125,7 @@ export default {
 
 @media (max-width: 1024px) {
   .box_enter_email {
-    min-height: 74vh !important;
+    min-height: 78vh !important;
   }
 }
 

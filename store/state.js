@@ -7,7 +7,8 @@ const state = {
     blogs: [],
     property: null,
     api_key: null,
-    headerfile: null
+    headerfile: null,
+    cadet: null
 }
 
 export default state

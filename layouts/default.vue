@@ -1,5 +1,6 @@
 <template>
   <div>
+    <header-component></header-component>
     <nuxt />
     <footer-component/>
   </div>
