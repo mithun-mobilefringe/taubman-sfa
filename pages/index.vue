@@ -11,7 +11,7 @@
             <p>{{$t('home.consent')}}</p>
           </div>
           <div>
-            <div class="email-textbox">
+            <div class="form-group email-textbox">
               <div class="input-group semi-round">
                 <span class="input-group-addon bg-light border-light py-2 mail-symbol">
                   <i class="fa fa-envelope-o fa-1_2x"></i>
@@ -25,11 +25,11 @@
               </div>
             </div>
           </div>
-          <!-- <div class="form-row" v-if="error.hasError">
-                            <div class="form-group col">
-                                <div class="form-error">{{$t('error.message')}}</div>
-                            </div>
-          </div>-->
+          <div class="form-row" v-if="errors">
+              <div class="form-group col" v-for="error in errors" :key="error">
+                  <div class="form-error">{{error}}</div>
+              </div>
+          </div>
         </div>
         <div class="app-checkbox clearfix">
           <div class="form-check">
@@ -63,7 +63,8 @@
         </div>
         <div class="clearfix"></div>
         <div class="app-step-btn">
-            <nuxt-link to="/badges" class="btn btn-step">Next</nuxt-link>
+            <button class="btn btn-step" @click="saveEmail()">Next</button>
+            <!-- <nuxt-link to="/badges" class="btn btn-step">Next</nuxt-link> -->
         </div>
       </div>
     </div>
@@ -82,7 +83,7 @@ import Cookies from "js-cookie";
 export default {
   data: function() {
     return {
-      error: null,
+      errors: [],
       optin: true,
       optin3d: false,
       email: null,
@@ -96,6 +97,30 @@ export default {
   },
   computed: {
     ...mapGetters(["property", "timezone", "locale"])
+  },
+  methods: {
+    saveEmail: function() {
+      this.errors = [];
+      if(this.checkform()){
+        this.$router.push('/badges');
+      }
+    },
+    checkform: function() {
+      console.log("Rmail : " + this.email);
+      if (!this.email) {
+        this.errors.push('Please Enter your Email Address');
+      } else if (!this.validEmail(this.email)) {
+        this.errors.push('Valid email required');
+      }
+
+      if (!this.errors.length) {
+        return true;
+      }
+    },
+    validEmail: function (email) {
+      var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(email);
+    }
   }
 };
 </script>
