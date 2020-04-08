@@ -3,7 +3,7 @@
     <!-- Cadet Builder -->
     <div>
       <!-- Choose Suit -->
-      <div id="box_cadet_choose_suit" class="container box-home create-new-badge-container">
+      <div id="box_cadet_choose_suit" class="container box-home new-badge-container">
         <div class="step step-2"></div>
         <div class="col-sm-6 mx-auto">
           <h2

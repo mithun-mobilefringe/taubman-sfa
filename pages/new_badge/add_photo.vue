@@ -5,7 +5,7 @@
       <!-- Picture -->
       <div id="box_cadet_upload_pic">
         <!-- Picture Upload -->
-        <div class="container box-home create-new-badge-container">
+        <div class="container box-home new-badge-container">
           <div class="step step-3"></div>
           <div class="col-sm-6 mx-auto">
             <h2 class="app-lead">Add a photo to use on TODO : Mithun's badge.</h2>

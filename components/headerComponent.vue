@@ -106,6 +106,7 @@ export default {
 }
 .header-label {
   width: 270px;
+  margin-top: 5px;
 }
 .md-logo {
   background: url("../assets/img/md-logo.png") no-repeat;

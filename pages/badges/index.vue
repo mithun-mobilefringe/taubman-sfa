@@ -131,13 +131,13 @@
           </div>
         </div>
       </div>
-      <div class="text-center">
+      <div class="text-center btn-margin-top">
         <a
           href
           id="btn_choose_guide_sparkle"
           class="btn-choose-guide btn btn-step md"
         >
-          <i class="fa fa-check"></i>  {{$t('badges.back_btn')}}
+          <i class="fa fa-check"></i>  Back to The Mall at Short Hills
         </a>
       </div>
       <!-- /Delete Modal -->
@@ -191,5 +191,8 @@ export default {
 .create-badge-link {
     display: flex;
     cursor: pointer;
+}
+.btn-margin-top{
+  margin-top: 20px;
 }
 </style>

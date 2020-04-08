@@ -14,8 +14,7 @@ module.exports = {
         "skip_line_heading": "Skip the long lines!",
         "create_badge": "Create new badge",
         "badges_txt": "Your Badges",
-        "delete_all": "Delete All",
-        "back_btn": "Back to The Mall at Short Hills"
+        "delete_all": "Delete All"
     },
     "new_badge": {
         "heading": "Naughty or nice? Who is going to be helping Santa this year?",

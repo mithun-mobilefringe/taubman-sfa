@@ -3,7 +3,7 @@
     <!-- Choose Elf -->
     <div
       id="box_cadet_choose_elf"
-      class="container box-home create-new-badge-container"
+      class="container box-home new-badge-container"
       data-ng-controller="cadetElf"
       data-ng-if="screens.active === 'cadet-builder-elf'"
     >
@@ -14,16 +14,18 @@
           <div class="chooose-guid-form text-center">
             <div class="form-row">
               <div class="guide-box col-sm-4" v-for="elf in guides" :key="elf.key">
+                {{elf.key}}
                 <div
                   
-                  :class="[{'guide-bio-open': elf.bioOpen}, 'guide guide-{{elf.key}}']"
+                  :class="[{'guide-bio-open': elf.bioOpen}, 'guide guide-{{elf.key}}', getClassForElf(elf.key)]"
                   @click="onElfClick($event, elf)"
                 >
-                  <a href class="guide-bio-close" data-ng-click="onCloseBioClick($event, elf)">Close</a>
+                <span>elf.key</span>
+                  <a href class="guide-bio-close" @click="onCloseBioClick($event, elf)">Close</a>
                 </div>
-                <a href class="btn btn-step md" data-ng-click="onChooseElfClick($event, elf)">
+                <nuxt-link to="/new_badge/preview" class="btn btn-step md">
                   <i class="fa fa-check"></i> Choose me!
-                </a>
+                </nuxt-link>
               </div>
             </div>
           </div>
@@ -64,7 +66,12 @@ export default {
       'locale'
     ]), */
   },
-  methods: {}
+  methods: {
+    getClassForElf: function(elf) {
+      console.log("EFL : " + elf);
+      return "guide guide-" + elf;
+    }
+  }
 };
 </script>
 <style>
