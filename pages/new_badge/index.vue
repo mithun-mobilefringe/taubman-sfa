@@ -4,7 +4,7 @@
             <div>
 
                 <!-- Enter Name -->
-                <div id="box_cadet_enter_name" class="container box-home new-badge-container">
+                <div id="box_cadet_enter_name" class="container box-home new-badge-container name-new-badge-container">
                     <div class="step step-1">
                         
                     </div>  
@@ -77,16 +77,10 @@ export default {
 };
 </script>
 <style>
-.red-box {
-    display: flex;
-    flex-direction: column;
+@media (min-width: 1025px){
+    .name-new-badge-container {
+        margin-top: 8px;
 }
-.btn-home-fast-pass {
-    white-space:normal !important;
-    word-wrap: break-word; 
 }
-.create-badge-link {
-    display: flex;
-    cursor: pointer;
-}
+
 </style>
