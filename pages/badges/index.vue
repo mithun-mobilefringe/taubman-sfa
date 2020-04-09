@@ -22,6 +22,7 @@
               <div class="row">
                 <div class="col">
                   <!-- Badge -->
+                  <div v-for="badge in badges" :key=badge.id>
                   <div class="ubadge-item bg-green" data-id="1">
                     <!-- please replace with actual IDs -->
                     <div class="ubadge-picture">
@@ -29,10 +30,10 @@
                     </div>
                     <div class="ubadge-info">
                       <strong>
-                        "Mithun"
+                        {{badge.short_name}} {{badge.codename}}
                         <!-- {{cadet1.name}} "{{cadet1.elf.name}}" -->
                       </strong>
-                      <br />"Flight Director"
+                      <br />{{characters[badge.taubman_character_id].character_name}}
                       <!-- {{cadet1.elf.specialty}} -->
                     </div>
                     <div class="ubadge-action">
@@ -45,29 +46,9 @@
                       </a>
                     </div>
                   </div>
-                  <!-- /Badge -->
-
-                  <!-- Badge -->
-                  <div class="ubadge-item bg-green" data-id="2">
-                    <!-- please replace with actual IDs -->
-                    <div class="ubadge-picture">
-                      <!-- <div class="ubadge-picture-container" style="background-image: url({{ cadet.pic.imageUrl}})"></div> -->
-                    </div>
-                    <div class="ubadge-info">
-                      <!-- <strong>{{cadet2.name}} "{{cadet2.elf.name}}"</strong><br/>
-                      {{cadet2.elf.specialty}}-->
-                    </div>
-                    <div class="ubadge-action">
-                      <a href class="ubadge-button-edit">
-                        <i class="fa fa-2x fa-pencil"></i>
-                      </a>
-                      <br />
-                      <a href class="ubadge-button-delete">
-                        <i class="fa fa-2x fa-times"></i>
-                      </a>
-                    </div>
                   </div>
                   <!-- /Badge -->
+
                 </div>
               </div>
             </div>
@@ -157,15 +138,15 @@ export default {
   },
   data: function() {
     return {
-      
+      badges: []
     };
   },
   beforeRouteUpdate(to, from, next) {
     next();
   },
   created() {
-    console.log("PROPERTY IN BADGE : " + this.property)
-      this.$store.state.headerfile = require("~/assets/img/t-your-badges.png")
+    this.$store.state.headerfile = require("~/assets/img/t-your-badges.png")
+    this.loadData();
       
   },
   computed: {
@@ -173,10 +154,23 @@ export default {
       'property',
       'timezone',
       'locale',
-      'email'
-    ]),
+      'email',
+      'profile',
+      'is_new_profile',
+      'characters'
+    ])
   },
-  methods: {}
+  methods: {
+    loadData: function () {
+      debugger;
+      this.profile = this.$cookies.get("taubman-profile");
+      console.log("Profile :  " + this.profile);
+      if(this.profile) {
+        this.badges = this.profile.badges;
+      }
+      
+    }
+  }
 };
 </script>
 <style>

@@ -20,6 +20,11 @@ const getters = {
         moment.locale(state.i18n.locale);
         return state.i18n.locale;
     },
+    profile: state => state.profile,
+    badge: state => state.badge,
+    email: state => state.profile,
+    is_new_profile: state => state.is_new_profile,
+    characters: state => state.characters
 }
 
 export default getters

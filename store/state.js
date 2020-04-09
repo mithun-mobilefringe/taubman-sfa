@@ -8,8 +8,11 @@ const state = {
     property: null,
     api_key: null,
     headerfile: null,
-    cadet: null,
-    email: null
+    badge: null,
+    email: null,
+    profile: null,
+    is_new_profile: false,
+    charaters: []
 }
 
 export default state

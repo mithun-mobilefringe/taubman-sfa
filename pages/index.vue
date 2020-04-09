@@ -93,20 +93,59 @@ export default {
   components: {
   },
   created() {
-    console.log("Proerty in main page : " + this.property.name);
     this.$store.state.headerfile = require("~/assets/img/t-join-crew.png")
+    let ppt = this.$cookies.get("taubman-property");
+    this.property = ppt;
+    let mailID = this.$cookies.get("taubman-"+ this.property.id +"-email");
+    if(mailID){
+      this.email = mailID;
+      this.$store.state.email = mailID;
+      this.getProfile();
+    }
+    
   },
   computed: {
      ...mapGetters(["property", "timezone", "locale"])
   },
   methods: {
     saveEmail: function() {
-
       this.errors = [];
       if(this.checkform()){
         this.$store.state.email = this.email;
-        this.$router.push('/badges');
+        this.$cookies.set("taubman-"+ this.property.id +"-email", this.email);
+        this.getProfile();
       }
+    },
+    getProfile: function () {
+      let path = "/get_profile_by_email";
+        let data = {
+          "email": this.email,
+        }
+      this.postMethod(path,data).then(response => {
+        debugger;
+        console.log("Profile : " + response.data)
+        var profile = response.data.data;
+        if(profile) {
+          this.$store.state.profile = profile;
+          this.$store.state.is_new_profile = false;
+          this.$cookies.set("taubman-profile", profile);
+          this.$router.push('/badges');
+        } else {
+          this.$store.state.is_new_profile = true;
+          this.$router.push('/new_badge');
+          /* let path = "/add_profile";
+          let data = {
+
+          }
+          this.postMethod(path, data).then(response => {
+
+          }, error => {
+            console.log("Error: " + error);
+          }) */
+        }
+      }, (error) => { 
+        console.log("Error: " + error);
+      });
     },
     checkform: function() {
       if (!this.email) {

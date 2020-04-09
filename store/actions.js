@@ -77,7 +77,6 @@ const actions = {
             axios.post(path, data).then(response => {
                 console.log("calling POST:", path);
                 console.log("response data", response.data);
-                processResourceFromResponse(resource, response, commit);
                 resolve(response);
             }).catch(error => {
                 handleError(error);
