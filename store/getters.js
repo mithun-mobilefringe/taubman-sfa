@@ -17,14 +17,15 @@ const getters = {
     property: state => state.property,
     repos: state => state.repos,
     locale: (state) => {
-        moment.locale(state.i18n.locale);
-        return state.i18n.locale;
+        moment.locale(state.locale);
+        return state.locale;
     },
     profile: state => state.profile,
     badge: state => state.badge,
     email: state => state.profile,
     is_new_profile: state => state.is_new_profile,
-    characters: state => state.characters
+    characters: state => state.characters,
+    cadet: state => state.cadet
 }
 
 export default getters

@@ -22,7 +22,6 @@ export default {
   },
   created() {
     let ppt = this.$cookies.get("taubman-property");
-    debugger;
     if(ppt) {
       this.$store.state.property = ppt;
     } else {
@@ -35,6 +34,7 @@ export default {
               this.$store.state.property = this.property;
               this.$cookies.set("taubman-property", this.property);
               this.getCharacters();
+              this.$store.state.locale = this.$i18n.locale;
               this.$router.push('/');
           }, (error) => { 
             console.log("Error: " + error);
@@ -61,8 +61,8 @@ export default {
       let path = "/get_characters";
           let data = {}
           this.postMethod(path, data).then(response => {
-            debugger;
             this.$store.state.characters = response.data.data.characters;
+            this.$cookies.set("taubman-characters", response.data.data);
           }, error => {
             console.log("Error: " + error);
           })

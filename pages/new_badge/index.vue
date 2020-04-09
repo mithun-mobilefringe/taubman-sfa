@@ -15,14 +15,14 @@
                                 <div class="form-group col">
                                     <div class="input-group semi-round green-box">
                                         <span class="input-group-addon bg-light py-2"><i class="fa fa-smile-o fa-2x"></i></span>
-                                        <input type="text" id="txt_create_badge_name" class="form-control py-2 icon-email" placeholder="Please enter cadet's first name" />  
+                                        <input type="text" id="txt_create_badge_name" v-model="cadetName" class="form-control py-2 icon-email" placeholder="Please enter cadet's first name" />  
                                     </div>
                                 </div>
                             </div>
-                            <div id="box_create_badge_name_error" class="form-row" style="display: none;">
+                            <div id="box_create_badge_name_error" class="form-row" v-if="errors.length > 0">
                                 <div class="form-group col">
                                     <div class="form-error" id="invalid-name">{{$t('error.invalid_name')}}</div>
-                                    <div class="form-error" id="invalid-length">{{$t('error.invalid_name_length')}}</div>
+                                    <!-- <div class="form-error" id="invalid-length">{{$t('error.invalid_name_length')}}</div> -->
                                 </div>
                             </div>
                             <div class="form-row">
@@ -30,9 +30,7 @@
                             </div>          
                             <div class="clearfix"></div>
                             <div class="app-step-btn text-right">
-                                <nuxt-link to="/new_badge/pick_suit" id="btn_create_badge_name_next" class="btn btn-step">
-                                {{$t('app.next')}}
-                                </nuxt-link>
+                              <button id="btn_create_badge_name_next" class="btn btn-step" @click="saveName()">{{$t('app.next')}}</button>
                             </div>
                         </div>          
                     </div>
@@ -55,25 +53,33 @@ export default {
   },
   data: function() {
     return {
-      
+      errors: [],
+      cadetName: ""
     };
-  },
-  beforeRouteUpdate(to, from, next) {
-    next();
   },
   created() {
       this.$store.state.headerfile = require("~/assets/img/t-create-badge.png")
   },
   computed: {
-    /* ...mapGetters([
+    ...mapGetters([
       'property',
       'timezone',
-      'processedEvents',
-      'findRepoByName',
       'locale'
-    ]), */
+    ]),
   },
-  methods: {}
+  methods: {
+    saveName: function () {
+      this.errors = [];
+      if(this.cadetName.length > 0){
+        let cadet = {};
+        cadet['name'] = this.cadetName;
+        this.$store.state.cadet = cadet;
+        this.$router.push('/new_badge/pick_suit');
+      } else {
+        this.errors.push('Please Enter your Name');
+      }
+    }
+  }
 };
 </script>
 <style>

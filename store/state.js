@@ -12,7 +12,8 @@ const state = {
     email: null,
     profile: null,
     is_new_profile: false,
-    charaters: []
+    charaters: [],
+    cadet: {}
 }
 
 export default state

@@ -13,18 +13,18 @@
           <div class="no-form">
             <div class="select-container">
               <div class="selection select-1">
-                <nuxt-link
-                  to="/new_badge/add_photo"
+                <button
                   id="btn_choose_suit_m"
                   class="btn btn-select"
-                >{{$t('app.choose')}}</nuxt-link>
+                  @click="saveSuit('M')"
+                >{{$t('app.choose')}}</button>
               </div>
               <div class="selection select-2">
-                <nuxt-link
-                  to="/new_badge/add_photo"
+                <button
                   id="btn_choose_suit_f"
                   class="btn btn-select"
-                >{{$t('app.choose')}}</nuxt-link>
+                  @click="saveSuit('F')"
+                >{{$t('app.choose')}}</button>
               </div>
             </div>
             <div class="clearfix"></div>
@@ -48,22 +48,23 @@ export default {
   data: function() {
     return {};
   },
-  beforeRouteUpdate(to, from, next) {
-    next();
-  },
   created() {
     this.$store.state.headerfile = require("~/assets/img/t-create-badge.png");
   },
   computed: {
-    /* ...mapGetters([
-      'property',
-      'timezone',
-      'processedEvents',
-      'findRepoByName',
-      'locale'
-    ]), */
+    ...mapGetters(["property", "timezone", "locale", "cadet"])
   },
-  methods: {}
+  methods: {
+    saveSuit: function(gender) {
+      this.$store.state.cadet["gender"] = gender;
+      if (gender == "M") {
+        this.$store.state.cadet["suit"] = "boy";
+      } else {
+        this.$store.state.cadet["suit"] = "girl";
+      }
+      this.$router.push("/new_badge/add_photo");
+    }
+  }
 };
 </script>
 <style>

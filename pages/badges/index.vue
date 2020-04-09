@@ -162,13 +162,10 @@ export default {
   },
   methods: {
     loadData: function () {
-      debugger;
       this.profile = this.$cookies.get("taubman-profile");
-      console.log("Profile :  " + this.profile);
       if(this.profile) {
         this.badges = this.profile.badges;
       }
-      
     }
   }
 };

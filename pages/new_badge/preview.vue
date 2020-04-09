@@ -10,13 +10,13 @@
                             <div class="row">
                                 <div class="col text-center py-2">
                                     <div class="id-badge-container">
-                                        <!-- <div class="id-badge-img">
-                                            <div class="id-badge-img-container" style="background-image: url({{ cadet.pic.imageUrl}});"></div>
+                                        <div class="id-badge-img">
+                                            <div class="id-badge-img-container" :style="`background-image: url({{ cadet.imageURL}});`"></div>
                                         </div>
                                         <div class="id-badge-name"><span>{{cadet.name}}</span></div>
-                                        <div class="id-badge-codename"><span>"{{elf.name}}"</span></div>
-                                        <div class="id-badge-specialty"><span>{{elf.specialty}}</span></div>
-                                        <div class="id-badge-mall"><span>{{mall}}</span></div> -->
+                                        <div class="id-badge-codename"><span>"{{cadet.character.name}}"</span></div>
+                                        <div class="id-badge-specialty"><span>{{JSON.parse(this.cadet.character.job_title)[this.locale]}}</span></div>
+                                        <div class="id-badge-mall"><span>{{property.name}}</span></div>
                                     </div>
                                 </div>
                             </div>                 
@@ -64,15 +64,18 @@ export default {
   },
   created() {
     this.$store.state.headerfile = require("~/assets/img/t-create-badge.png");
+    debugger;
+    if(!this.cadet.imageURL) {
+        this.cadet['imageURL'] = require("~/assets/img/elfPhotoPlaceholder_160.png");
+    }
   },
   computed: {
-    /* ...mapGetters([
+    ...mapGetters([
       'property',
       'timezone',
-      'processedEvents',
-      'findRepoByName',
+      'cadet',
       'locale'
-    ]), */
+    ]),
   },
   methods: {}
 };

@@ -7,25 +7,21 @@
       data-ng-controller="cadetElf"
       data-ng-if="screens.active === 'cadet-builder-elf'"
     >
-    <div class="step step-4"></div>
+      <div class="step step-4"></div>
       <div class="col-sm-8 mx-auto">
         <h2 class="col-sm-8 mx-auto app-lead">Everyone needs a little elf help. Choose a guide</h2>
         <div class="no-form">
           <div class="chooose-guid-form text-center">
             <div class="form-row">
-              <div class="guide-box col-sm-4" v-for="elf in guides" :key="elf.key">
-                {{elf.key}}
-                <div
-                  
-                  :class="[{'guide-bio-open': elf.bioOpen}, 'guide guide-{{elf.key}}', getClassForElf(elf.key)]"
-                  @click="onElfClick($event, elf)"
-                >
-                <span>elf.key</span>
-                  <a href class="guide-bio-close" @click="onCloseBioClick($event, elf)">Close</a>
+              <div class="guide-box col-sm-4" v-for="elf in characters" :key="elf.id">
+                {{elf.character_name}}
+                <div :class="[{'guide-bio-open': elf.bioOpen}, getClassForElf(elf.character_name)]">
+                  <!-- <span>elf.key</span>
+                  <a href class="guide-bio-close" @click="onCloseBioClick($event, elf)">Close</a>-->
                 </div>
-                <nuxt-link to="/new_badge/preview" class="btn btn-step md">
+                <button to="/new_badge/preview" @click="onElfClick(elf)" class="btn btn-step md">
                   <i class="fa fa-check"></i> Choose me!
-                </nuxt-link>
+                </button>
               </div>
             </div>
           </div>
@@ -47,7 +43,7 @@ export default {
   components: {},
   data: function() {
     return {
-        guides:null
+      guides: null
     };
   },
   beforeRouteUpdate(to, from, next) {
@@ -55,21 +51,17 @@ export default {
   },
   created() {
     this.$store.state.headerfile = require("~/assets/img/t-create-badge.png");
-    this.guides = [{key: 'george'}, {key: 'sparkle'}, {key: 'flash'}]
   },
   computed: {
-    /* ...mapGetters([
-      'property',
-      'timezone',
-      'processedEvents',
-      'findRepoByName',
-      'locale'
-    ]), */
+    ...mapGetters(["property", "timezone", "cadet", "characters", "locale"])
   },
   methods: {
-    getClassForElf: function(elf) {
-      console.log("EFL : " + elf);
-      return "guide guide-" + elf;
+    getClassForElf: function(character_name) {
+      return "guide guide-" + character_name.toLowerCase();
+    },
+    onElfClick: function(elf) {
+      this.$store.state.cadet["character"] = elf;
+      this.$router.push("/new_badge/preview");
     }
   }
 };

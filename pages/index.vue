@@ -122,8 +122,6 @@ export default {
           "email": this.email,
         }
       this.postMethod(path,data).then(response => {
-        debugger;
-        console.log("Profile : " + response.data)
         var profile = response.data.data;
         if(profile) {
           this.$store.state.profile = profile;
@@ -133,15 +131,6 @@ export default {
         } else {
           this.$store.state.is_new_profile = true;
           this.$router.push('/new_badge');
-          /* let path = "/add_profile";
-          let data = {
-
-          }
-          this.postMethod(path, data).then(response => {
-
-          }, error => {
-            console.log("Error: " + error);
-          }) */
         }
       }, (error) => { 
         console.log("Error: " + error);
