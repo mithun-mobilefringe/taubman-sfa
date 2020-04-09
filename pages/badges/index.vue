@@ -164,16 +164,17 @@ export default {
     next();
   },
   created() {
+    console.log("PROPERTY IN BADGE : " + this.property)
       this.$store.state.headerfile = require("~/assets/img/t-your-badges.png")
+      
   },
   computed: {
-    /* ...mapGetters([
+    ...mapGetters([
       'property',
       'timezone',
-      'processedEvents',
-      'findRepoByName',
-      'locale'
-    ]), */
+      'locale',
+      'email'
+    ]),
   },
   methods: {}
 };

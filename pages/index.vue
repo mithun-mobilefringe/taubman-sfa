@@ -93,20 +93,22 @@ export default {
   components: {
   },
   created() {
+    console.log("Proerty in main page : " + this.property.name);
     this.$store.state.headerfile = require("~/assets/img/t-join-crew.png")
   },
   computed: {
-    ...mapGetters(["property", "timezone", "locale"])
+     ...mapGetters(["property", "timezone", "locale"])
   },
   methods: {
     saveEmail: function() {
+
       this.errors = [];
       if(this.checkform()){
+        this.$store.state.email = this.email;
         this.$router.push('/badges');
       }
     },
     checkform: function() {
-      console.log("Rmail : " + this.email);
       if (!this.email) {
         this.errors.push('Please Enter your Email Address');
       } else if (!this.validEmail(this.email)) {
