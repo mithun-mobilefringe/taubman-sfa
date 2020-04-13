@@ -8,7 +8,7 @@
         <div class="container box-home new-badge-container">
           <div class="step step-3"></div>
           <div class="col-sm-6 mx-auto">
-            <h2 class="app-lead">Add a photo to use on TODO : Mithun's badge.</h2>
+            <h2 class="app-lead">Add a photo to use on TODO : {{cadet.short_name}}'s badge.</h2>
             <div class="no-form">
               <div class="photo-form text-center">
                 <div
@@ -93,13 +93,12 @@ export default {
     this.$store.state.headerfile = require("~/assets/img/t-create-badge.png");
   },
   computed: {
-    /* ...mapGetters([
+    ...mapGetters([
       'property',
       'timezone',
-      'processedEvents',
-      'findRepoByName',
-      'locale'
-    ]), */
+      'locale',
+      'cadet'
+    ]),
   },
   methods: {}
 };

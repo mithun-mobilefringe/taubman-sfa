@@ -13,6 +13,9 @@ Vue.mixin({
                 path: path,
                 data: data
             });
+        },
+        getCharacterName(id) {
+            return this.characters[id].character_name;
         }
     }
 })

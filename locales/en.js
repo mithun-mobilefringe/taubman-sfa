@@ -25,6 +25,9 @@ module.exports = {
         "remove_photo": "Remove Photo",
         "skip": "Skip this step"
     },
+    "preview": {
+        "approve_badge": "Approve Badge"
+    },
     "error": {
         "message": "Error",
         "invalid_name": "Invalid name!",
@@ -32,6 +35,7 @@ module.exports = {
     },
     "app": {
         "next": "Next",
-        "choose": "Choose"
+        "choose": "Choose",
+        "edit_badge": "Edit Badge"
     }
 }

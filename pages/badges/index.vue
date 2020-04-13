@@ -19,7 +19,7 @@
                   <a href id="btn_home_delete_all" class="text-green">{{$t('badges.delete_all')}}</a>
                 </div>
               </div>
-              <div class="row">
+              <div class="row" v-if="badges">
                 <div class="col">
                   <!-- Badge -->
                   <div v-for="badge in badges" :key=badge.id>
@@ -29,11 +29,11 @@
                       <!-- <div class="ubadge-picture-container" style="background-image: url({{ cadet.pic.imageUrl}});"></div> -->
                     </div>
                     <div class="ubadge-info">
-                      <strong>
+                      <p><strong>
                         {{badge.short_name}} {{badge.codename}}
                         <!-- {{cadet1.name}} "{{cadet1.elf.name}}" -->
-                      </strong>
-                      <br />{{characters[badge.taubman_character_id].character_name}}
+                      </strong></p>
+                      <p style="text-align: justify;"><strong>{{getCharacterName(badge.taubman_character_id-1)}}</strong></p>
                       <!-- {{cadet1.elf.specialty}} -->
                     </div>
                     <div class="ubadge-action">
@@ -145,7 +145,8 @@ export default {
     next();
   },
   created() {
-    this.$store.state.headerfile = require("~/assets/img/t-your-badges.png")
+    this.$store.state.headerfile = require("~/assets/img/t-your-badges.png");
+    debugger;
     this.loadData();
       
   },
@@ -155,7 +156,6 @@ export default {
       'timezone',
       'locale',
       'email',
-      'profile',
       'is_new_profile',
       'characters'
     ])

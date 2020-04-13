@@ -59,13 +59,13 @@ export default {
   methods: {
     getCharacters: function () {
       let path = "/get_characters";
-          let data = {}
-          this.postMethod(path, data).then(response => {
-            this.$store.state.characters = response.data.data.characters;
-            this.$cookies.set("taubman-characters", response.data.data);
-          }, error => {
-            console.log("Error: " + error);
-          })
+      let data = {}
+      this.postMethod(path, data).then(response => {
+        this.$store.state.characters = response.data.data.characters;
+        this.$cookies.set("taubman-characters", response.data.data);
+      }, error => {
+        console.log("Error: " + error);
+      })
     }
   }
 }
