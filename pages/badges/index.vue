@@ -28,7 +28,7 @@
                     <div class="ubadge-picture">
                       <!-- <div class="ubadge-picture-container" style="background-image: url({{ cadet.pic.imageUrl}});"></div> -->
                     </div>
-                    <div class="ubadge-info">
+                    <div class="ubadge-info" @click="viewBadge(badge.id)">
                       <p><strong>
                         {{badge.short_name}} {{badge.codename}}
                         <!-- {{cadet1.name}} "{{cadet1.elf.name}}" -->
@@ -41,7 +41,7 @@
                         <i class="fa fa-2x fa-pencil"></i>
                       </a>
                       <br />
-                      <a href class="ubadge-button-delete">
+                      <a class="ubadge-button-delete btn" @click='toggleDeleteModalDisplay(badge.id)'>
                         <i class="fa fa-2x fa-times"></i>
                       </a>
                     </div>
@@ -79,7 +79,7 @@
       </div>
 
       <!-- Delete Modal -->
-      <div id="box_delete_modal" style="display: none;">
+      <div id="box_delete_modal" v-if="delete_modal">
         <div class="modal-backdrop fade show"></div>
         <div
           id="myModal"
@@ -99,12 +99,12 @@
                 </div>
                 <div class="row">
                   <div class="col">
-                    <a href id="btn_home_delete_confirm" class="btn btn-step">Yes, Delete</a>
+                    <button id="btn_home_delete_confirm" class="btn btn-step" @click="deleteBadge()">Yes, Delete</button>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col">
-                    <a href id="btn_home_delete_cancel" class="btn btn-step white">No, Cancel</a>
+                    <a id="btn_home_delete_cancel" class="btn btn-step white" @click="toggleDeleteModalDisplay()">No, Cancel</a>
                   </div>
                 </div>
               </div>
@@ -138,7 +138,9 @@ export default {
   },
   data: function() {
     return {
-      badges: []
+      badges: [],
+      delete_modal: false,
+      badge_id_to_be_deleted: null
     };
   },
   beforeRouteUpdate(to, from, next) {
@@ -146,8 +148,7 @@ export default {
   },
   created() {
     this.$store.state.headerfile = require("~/assets/img/t-your-badges.png");
-    debugger;
-    this.loadData();
+    
       
   },
   computed: {
@@ -162,11 +163,56 @@ export default {
   },
   methods: {
     loadData: function () {
-      this.profile = this.$cookies.get("taubman-profile");
+      debugger;
+      this.profile = this.$store.state.profile;
       if(this.profile) {
         this.badges = this.profile.badges;
       }
+    },
+    viewBadge: function(id) {
+      let nextPageURL = '/badges/view/' + id;
+      this.$router.push(nextPageURL);
+    },
+    deleteBadge: function () {
+      debugger;
+      let path = "/delete_badge";
+        let data = {
+          "badge_id": this.badge_id_to_be_deleted
+        };
+      this.postMethod(path,data).then(response => {
+        this.badge_id_to_be_deleted = null;
+        this.delete_modal = !this.delete_modal;
+        this.updateProfile();
+      }, (error) => { 
+        console.log("Error: " + error);
+      });
+    },
+    toggleDeleteModalDisplay: function(id) {
+      debugger;
+      if(id) {
+        this.badge_id_to_be_deleted = id;
+      } 
+      this.delete_modal = !this.delete_modal;
+      
+    },
+    updateProfile: function () {
+        let path = "/get_profile_by_email";
+        let data = this.email;
+      this.postMethod(path,data).then(response => {
+        var profile = response.data.data;
+        if(profile) {
+          this.$store.state.profile = profile;
+          this.$store.state.is_new_profile = false;
+          this.badges = profile.badges;
+          this.$cookies.set("taubman-profile", profile);
+        }
+      }, (error) => { 
+        console.log("Error: " + error);
+      });
     }
+  },
+  beforeMount() {
+    this.loadData();
   }
 };
 </script>
@@ -186,5 +232,8 @@ export default {
 }
 .btn-margin-top{
   margin-top: 20px;
+}
+.ubadge-button-delete {
+  padding: 0px;
 }
 </style>

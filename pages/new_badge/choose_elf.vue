@@ -61,6 +61,7 @@ export default {
     },
     onElfClick: function(elf) {
       this.$store.state.cadet["character"] = elf;
+      this.$store.state.cadet["codename"] = "Bells";
       this.$router.push("/new_badge/preview");
     }
   }

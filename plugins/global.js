@@ -16,6 +16,13 @@ Vue.mixin({
         },
         getCharacterName(id) {
             return this.characters[id].character_name;
+        },
+        getCharacterFromName: function(character_name) {
+            for (let character of this.$store.state.characters) {
+                if (character.character_name == character_name) {
+                    return character;
+                }
+            }
         }
     }
 })

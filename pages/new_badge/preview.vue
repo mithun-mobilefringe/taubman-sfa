@@ -8,7 +8,8 @@
           <div class="green-form" style="margin-bottom:30px">
             <div class="row">
               <div class="col text-center py-2">
-                <div class="id-badge-container">
+                  <previewComponent></previewComponent>
+                <!-- <div class="id-badge-container">
                   <div class="id-badge-img">
                     <div
                       class="id-badge-img-container"
@@ -27,7 +28,7 @@
                   <div class="id-badge-mall">
                     <span>{{property.name}}</span>
                   </div>
-                </div>
+                </div> -->
               </div>
             </div>
             <div class="app-checkbox final-box clearfix">
@@ -87,7 +88,9 @@ import moment from "moment";
 import tz from "moment-timezone";
 export default {
   head() {},
-  components: {},
+  components: {
+      'previewComponent': () => import('~/components/previewComponent.vue')
+  },
   data: function() {
     return {
       errors: [],
@@ -99,7 +102,6 @@ export default {
   },
   created() {
     this.$store.state.headerfile = require("~/assets/img/t-create-badge.png");
-    debugger;
     if (!this.cadet.imageURL) {
       this.cadet[
         "imageURL"
@@ -141,7 +143,7 @@ export default {
 
           this.postMethod(path, data).then(
             response => {
-              this.$router.push("/badges");
+                this.updateProfile();
             },
             error => {
               console.log("Error: " + error);
@@ -161,12 +163,27 @@ export default {
         gender: this.cadet.gender,
         character: this.cadet.character.character_name,
         suit: this.cadet.suit,
-        codename: "Bells"
+        codename: this.cadet.codename
       };
       if (this.cadet.picture_url) {
         data["picture_url"] = this.cadet.picture_url;
       }
       return data;
+    },
+    updateProfile: function () {
+        let path = "/get_profile_by_email";
+        let data = this.email;
+      this.postMethod(path,data).then(response => {
+        var profile = response.data.data;
+        if(profile) {
+          this.$store.state.profile = profile;
+          this.$store.state.is_new_profile = false;
+          this.$cookies.set("taubman-profile", profile);
+          this.$router.push('/badges');
+        }
+      }, (error) => { 
+        console.log("Error: " + error);
+      });
     }
   }
 };

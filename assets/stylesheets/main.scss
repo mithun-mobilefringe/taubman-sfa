@@ -91,6 +91,10 @@ body {
     flex-direction: column;
 }
 
+.app-body-full {
+    z-index: 99;
+}
+
 img {
     width: 100%;
 }
@@ -937,6 +941,7 @@ a.btn {
     left: 65px;
     top: 5px;
     margin: 10px 0;
+    cursor: pointer;
 }
 
 .ubadge-action {
