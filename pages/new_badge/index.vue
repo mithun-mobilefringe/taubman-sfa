@@ -13,9 +13,9 @@
                         <div class="no-form">           
                             <div class="form-row">
                                 <div class="form-group col">
-                                    <div class="input-group semi-round green-box">
-                                        <span class="input-group-addon bg-light py-2"><i class="fa fa-smile-o fa-2x"></i></span>
-                                        <input type="text" id="txt_create_badge_name" v-model="cadetName" class="form-control py-2 icon-email" placeholder="Please enter cadet's first name" />  
+                                    <div class="input-group semi-round green-box" style="padding:0px;">
+                                        <span class="input-group-addon bg-light"><i class="fa fa-smile-o fa-2x"></i></span>
+                                        <input type="text" id="txt_create_badge_name" v-model="cadetName" class="form-control icon-email" placeholder="Please enter cadet's first name" />  
                                     </div>
                                 </div>
                             </div>

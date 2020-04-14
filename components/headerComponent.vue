@@ -92,6 +92,7 @@ export default {
   padding: 0px;
 }
 .ribbon {
+  height: 125px;
   display: flex;
   align-items: center;
   flex-direction: column;

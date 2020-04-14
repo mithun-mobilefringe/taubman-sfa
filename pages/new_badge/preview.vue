@@ -65,7 +65,7 @@
               {{$t('preview.approve_badge')}}
             </button>
             <nuxt-link
-              to="/badges/edit/1"
+              to="/badges/edit/new_badge"
               id="btn_badge_preview_edit"
               class="btn btn-outline-green"
             >

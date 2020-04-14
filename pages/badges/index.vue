@@ -37,9 +37,9 @@
                       <!-- {{cadet1.elf.specialty}} -->
                     </div>
                     <div class="ubadge-action">
-                      <a href class="ubadge-button-edit">
+                      <nuxt-link class="ubadge-button-edit btn" :to="getEditURL(badge.id)">
                         <i class="fa fa-2x fa-pencil"></i>
-                      </a>
+                      </nuxt-link>
                       <br />
                       <a class="ubadge-button-delete btn" @click='toggleDeleteModalDisplay(badge.id)'>
                         <i class="fa fa-2x fa-times"></i>
@@ -174,7 +174,6 @@ export default {
       this.$router.push(nextPageURL);
     },
     deleteBadge: function () {
-      debugger;
       let path = "/delete_badge";
         let data = {
           "badge_id": this.badge_id_to_be_deleted
@@ -188,7 +187,6 @@ export default {
       });
     },
     toggleDeleteModalDisplay: function(id) {
-      debugger;
       if(id) {
         this.badge_id_to_be_deleted = id;
       } 
@@ -209,6 +207,9 @@ export default {
       }, (error) => { 
         console.log("Error: " + error);
       });
+    },
+    getEditURL: function(id) {
+      return "/badges/edit/" + id;
     }
   },
   beforeMount() {
@@ -233,7 +234,7 @@ export default {
 .btn-margin-top{
   margin-top: 20px;
 }
-.ubadge-button-delete {
+.ubadge-button-delete, .ubadge-button-edit {
   padding: 0px;
 }
 </style>
