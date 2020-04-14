@@ -1,6 +1,14 @@
 import Vue from 'vue'
 
 Vue.mixin({
+    data: function() {
+        return {
+            codenames: ["Sugarplum", "Dash", "Peppermint", "Frosty", "Snowflake", "Gumdrop", "Truffle",
+                "Tinsel", "Marshmallow", "Giggles", "Gizmo", "Buttons", "Candy Cane", "Mittens", "Pudding", "Cookie",
+                "Jingles", "Bubbles", "Twinkle", "Pinecone", "Icicle", "Sprinkles", "Chestnut", "Freeze", "Nutcracker"
+            ]
+        }
+    },
     methods: {
         commonMethod: function() {
             alert("Mithun");
@@ -23,6 +31,9 @@ Vue.mixin({
                     return character;
                 }
             }
-        }
+        },
+        getCodeName() {
+            return this.codenames[Math.floor(Math.random() * 24)];
+        },
     }
 })

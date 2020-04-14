@@ -130,13 +130,12 @@ export default {
             confirmation_code: "A123456789",
             badges: [this.getBadgeData()]
           };
-          /* this.postMethod(path, data).then(response => {
-                    this.$store.state.characters = response.data.data.characters;
-                    this.$cookies.set("taubman-characters", response.data.data);
-                    this.$router.push('/new_badge/pick_suit');
+          this.postMethod(path, data).then(response => {
+                    this.$cookies.set("taubman-profile", response.data.data);
+                    this.$router.push('/badges');
                 }, error => {
                     console.log("Error: " + error);
-                });  */
+                }); 
         } else {
           let path = "/add_badge";
           let data = this.getBadgeData();
