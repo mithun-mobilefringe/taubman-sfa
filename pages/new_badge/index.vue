@@ -72,7 +72,7 @@ export default {
       this.errors = [];
       if(this.cadetName.length > 0){
         let cadet = {};
-        cadet['name'] = this.cadetName;
+        cadet['short_name'] = this.cadetName;
         this.$store.state.cadet = cadet;
         this.$router.push('/new_badge/pick_suit');
       } else {

@@ -8,23 +8,29 @@
         <div class="container box-home new-badge-container">
           <div class="step step-3"></div>
           <div class="col-sm-6 mx-auto">
-            <h2 class="app-lead">Add a photo to use on TODO : {{cadet.short_name}}'s badge.</h2>
+            <h2 class="app-lead">Add a photo to use on : {{cadet.short_name}}'s badge.</h2>
             <div class="no-form">
               <div class="photo-form text-center">
                 <div
                   id="box_photo_uploader"
                   class="photo-box"
                   data-upload-url="http://sfa.projects.extanet.com"
+                  v-if="!imageData"
                 >
+                
                   <div class="fallback">
-                    <input name="file" type="file" accept="image/*" capture="camera" />
+                    <input name="file" type="file" ref="file" accept="image/*" capture="camera" v-on:change = 'handleFileUpload()'/>
                   </div>
+
                   <input name="picture_id" type="hidden" id="picture-id" value />
                   <input name="picture_url" type="hidden" id="picture-url" value />
                 </div>
-                <div id="box_photo_upload_error" class="form-row" style="display: none;">
+                <div class="user-photo-preview" v-if="imageData.length > 0">
+                  <img class="preview" :src="imageData">
+                </div>
+                <div id="box_photo_upload_error" class="form-row" v-if="error">
                   <div class="form-group col">
-                    <div class="form-error">{{$t('error.message')}}</div>
+                    <div class="form-error">{{error}}</div>
                   </div>
                 </div>
                 <div class="form-row">
@@ -33,27 +39,28 @@
                     <br />250 pixels tall. The maximum file size is 4 MB.
                   </div>
                 </div>
-                <div id="box_photo_upload_controls" style="display: none;">
+                <div id="box_photo_upload_controls" v-if="is_photo_available">
                   <div class="form-row">
                     <div class="col">
-                      <nuxt-link
+                      <button
                         to="/new_badge/choose_elf"
                         id="btn_photo_upload_use"
                         class="btn btn-step md"
-                      ><i class="fa fa-check"></i> {{$t('add_photo.use_photo')}}</nuxt-link>
+                        @click="add_photo_url()"
+                      ><i class="fa fa-check"></i> {{$t('add_photo.use_photo')}}</button>
                     </div>
                   </div>
                   <div class="form-row">
                     <div class="col">
-                        <nuxt-link
-                        to="/new_badge/add_photo"
+                        <button
                         id="btn_photo_upload_remove"
                         class="btn btn-outline-green"
-                      ><i class="fa fa-times"></i> {{$t('add_photo.remove_photo')}}</nuxt-link>
+                        @click="remove_photo()"
+                      ><i class="fa fa-times"></i> {{$t('add_photo.remove_photo')}}</button>
                     </div>
                   </div>
                 </div>
-                <div class="form-row">
+                <div class="form-row" v-if="!is_photo_available">
                   <div class="col">
                       <nuxt-link
                         to="/new_badge/choose_elf"
@@ -84,7 +91,12 @@ export default {
   head() {},
   components: {},
   data: function() {
-    return {};
+    return {
+      file: '',
+      imageData: '',
+      is_photo_available: false,
+      error: null
+    };
   },
   beforeRouteUpdate(to, from, next) {
     next();
@@ -100,7 +112,32 @@ export default {
       'cadet'
     ]),
   },
-  methods: {}
+  methods: {
+    handleFileUpload: function() {
+      this.error = null;
+      this.file = this.$refs.file.files[0];
+      var reader = new FileReader();
+      reader.onload = (e) => {
+          
+          if(this.file.size > 4*1024*1024) {
+            this.error = "Size of the image is more than 4MB";
+          } else {
+            this.imageData = e.target.result;
+            this.is_photo_available = true;
+          }
+      }
+      reader.readAsDataURL(this.file);
+    },
+    remove_photo: function() {
+      this.file = '';
+      this.imageData = '';
+      this.is_photo_available = false;
+    },
+    add_photo_url: function(){
+      this.$store.state.cadet['file'] = this.file;
+      this.$router.push("/new_badge/choose_elf")
+    }
+  }
 };
 </script>
 <style>
@@ -115,5 +152,17 @@ export default {
 .create-badge-link {
   display: flex;
   cursor: pointer;
+}
+.user-photo-preview{
+  border-radius: 0.8rem;
+  box-shadow: 0 15px 0 rgba(0, 0, 0, 0.10);
+  cursor: pointer;
+  display: inline-block;
+  margin-bottom: 20px;
+  min-height: 161px;
+  max-width: 160px;
+  overflow: hidden;
+  position: relative;
+  width: 160px;
 }
 </style>

@@ -2,7 +2,10 @@
   <div v-if="badge">
     <div class="id-badge-container">
       <div class="id-badge-img">
-        <div class="id-badge-img-container" :style="`background-image: url({{ badge.imageURL}});`"></div>
+        <div class="id-badge-img-container" v-if="badge.imageURL" :style="`background-image: url({{ badge.imageURL}});`"></div>
+        <div v-else>
+            <img class="id-badge-img-container" :src="imageData">
+        </div>
       </div>
       <div class="id-badge-name">
         <span>{{badge.name}}</span>
@@ -27,7 +30,9 @@ export default {
   components: {},
   data: function() {
     return {
-        badge: null
+        badge: null,
+        imageData: '',
+        is_photo_available: false  
     };
   },
   watch: {},
@@ -41,7 +46,18 @@ export default {
           } else {
               this.getBadge();
           }
-          
+          if(this.badge['file']) {
+              this.loadImage();
+          }
+      },
+      loadImage: function() {
+        this.file = this.cadet.file;
+        var reader = new FileReader();
+        reader.onload = (e) => {
+            this.imageData = e.target.result;
+            this.is_photo_available = true;
+        }
+      reader.readAsDataURL(this.file);
       },
       getBadge: function() {
         let path = "/get_badge";

@@ -71,10 +71,10 @@ const actions = {
             });
         })
     }, //POST = CREATE
-    POST: function({ state, commit }, { path, resource, data, queryParams = {} }) {
+    POST: function({ state, commit }, { path, resource, data, axiosConfig }) {
         return new Promise((resolve, reject) => {
             setAuthenticationHeaders(axios);
-            axios.post(path, data).then(response => {
+            axios.post(path, data, axiosConfig).then(response => {
                 console.log("calling POST:", path);
                 console.log("response data", response.data);
                 resolve(response);

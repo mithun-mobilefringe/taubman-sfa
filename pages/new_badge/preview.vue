@@ -8,27 +8,7 @@
           <div class="green-form" style="margin-bottom:30px">
             <div class="row">
               <div class="col text-center py-2">
-                  <previewComponent></previewComponent>
-                <!-- <div class="id-badge-container">
-                  <div class="id-badge-img">
-                    <div
-                      class="id-badge-img-container"
-                      :style="`background-image: url({{ cadet.imageURL}});`"
-                    ></div>
-                  </div>
-                  <div class="id-badge-name">
-                    <span>{{cadet.name}}</span>
-                  </div>
-                  <div class="id-badge-codename">
-                    <span>"{{cadet.character.name}}"</span>
-                  </div>
-                  <div class="id-badge-specialty">
-                    <span>{{JSON.parse(this.cadet.character.job_title)[this.locale]}}</span>
-                  </div>
-                  <div class="id-badge-mall">
-                    <span>{{property.name}}</span>
-                  </div>
-                </div> -->
+                <previewComponent></previewComponent>
               </div>
             </div>
             <div class="app-checkbox final-box clearfix">
@@ -43,7 +23,10 @@
                   <span>
                     I have read and agree to the
                     <a href="#" style="color: white;">Terms</a> and understand my information will be used in accordance with the
-                    <a href="#" style="color: white;">Privacy Policy</a>
+                    <a
+                      href="#"
+                      style="color: white;"
+                    >Privacy Policy</a>
                   </span>
                 </label>
               </div>
@@ -89,12 +72,13 @@ import tz from "moment-timezone";
 export default {
   head() {},
   components: {
-      'previewComponent': () => import('~/components/previewComponent.vue')
+    previewComponent: () => import("~/components/previewComponent.vue")
   },
   data: function() {
     return {
       errors: [],
-      agree_terms: false
+      agree_terms: false,
+      badgeToBeAdded: null
     };
   },
   beforeRouteUpdate(to, from, next) {
@@ -102,7 +86,7 @@ export default {
   },
   created() {
     this.$store.state.headerfile = require("~/assets/img/t-create-badge.png");
-    if (!this.cadet.imageURL) {
+    if (!this.cadet.file) {
       this.cadet[
         "imageURL"
       ] = require("~/assets/img/elfPhotoPlaceholder_160.png");
@@ -123,32 +107,12 @@ export default {
     approveBadge: function() {
       this.errors = [];
       if (this.agree_terms) {
-        if (this.is_new_profile) {
-          let path = "/add_profile";
-          let data = {
-            email: this.email,
-            confirmation_code: "A123456789",
-            badges: [this.getBadgeData()]
-          };
-          this.postMethod(path, data).then(response => {
-                    this.$cookies.set("taubman-profile", response.data.data);
-                    this.$router.push('/badges');
-                }, error => {
-                    console.log("Error: " + error);
-                }); 
+          this.getBadgeData();
+        /* if (this.is_new_profile) {
+          this.addProfile();
         } else {
-          let path = "/add_badge";
-          let data = this.getBadgeData();
-
-          this.postMethod(path, data).then(
-            response => {
-                this.updateProfile();
-            },
-            error => {
-              console.log("Error: " + error);
-            }
-          );
-        }
+          this.addBadge();
+        } */
       } else {
         this.errors.push(
           "You must agree to the Terms and understand the Privacy Policy to proceed!"
@@ -156,33 +120,100 @@ export default {
       }
     },
     getBadgeData: function() {
-      let data = {
+      this.badgeToBeAdded = {
         profile_id: this.profile.profile_id,
-        short_name: this.cadet.name,
+        short_name: this.cadet.short_name,
         gender: this.cadet.gender,
         character: this.cadet.character.character_name,
         suit: this.cadet.suit,
         codename: this.cadet.codename
       };
-      if (this.cadet.picture_url) {
-        data["picture_url"] = this.cadet.picture_url;
+      if (this.cadet.file) {
+        var path = "/add_picture";
+        let formData = new FormData();
+
+        formData.append("file", this.cadet.file);
+        formData.append("mall_id", this.property.id);
+        formData.append("signature", this.property.api_key);
+        formData.append("timestamp", new Date());
+
+        var axiosConfig = {
+          headers: {
+            "Content-Type": "multipart/form-data"
+          }
+        };
+
+        this.$store
+          .dispatch("POST", {
+            path: path,
+            data: formData,
+            axiosConfig: axiosConfig
+          })
+          .then(response => {
+            this.badgeToBeAdded["picture_url"] = response.data.data.picture_url;
+            this.addprofileOrBadge(this.badgeToBeAdded);
+          })
+          .catch(function() {
+            console.log("FAILURE!!");
+          });
+      } else {
+        this.addprofileOrBadge(this.badgeToBeAdded);
       }
-      return data;
     },
-    updateProfile: function () {
-        let path = "/get_profile_by_email";
-        let data = this.email;
-      this.postMethod(path,data).then(response => {
-        var profile = response.data.data;
-        if(profile) {
-          this.$store.state.profile = profile;
-          this.$store.state.is_new_profile = false;
-          this.$cookies.set("taubman-profile", profile);
-          this.$router.push('/badges');
+    addprofileOrBadge: function(badgeData){
+        if (this.is_new_profile) {
+          this.addProfile(badgeData);
+        } else {
+          this.addBadge(badgeData);
         }
-      }, (error) => { 
-        console.log("Error: " + error);
-      });
+    },
+    addBadge: function(badgeData) {
+        var path = "/add_badge";
+        var data = badgeData;
+
+        this.postMethod(path, data).then(
+        response => {
+            this.updateProfile();
+        },
+        error => {
+            console.log("Error: " + error);
+        }
+        );
+    },
+    addProfile: function(badgeData) {
+      let path = "/add_profile";
+      let data = {
+        email: this.email,
+        confirmation_code: "A123456789",
+        badges: [badgeData]
+      };
+      this.postMethod(path, data).then(
+        response => {
+          this.$cookies.set("taubman-profile", response.data.data);
+          this.$router.push("/badges");
+        },
+        error => {
+          console.log("Error: " + error);
+        }
+      );
+    },
+    updateProfile: function() {
+      let path = "/get_profile_by_email";
+      let data = this.email;
+      this.postMethod(path, data).then(
+        response => {
+          var profile = response.data.data;
+          if (profile) {
+            this.$store.state.profile = profile;
+            this.$store.state.is_new_profile = false;
+            this.$cookies.set("taubman-profile", profile);
+            this.$router.push("/badges");
+          }
+        },
+        error => {
+          console.log("Error: " + error);
+        }
+      );
     }
   }
 };

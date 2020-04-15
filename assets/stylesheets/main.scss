@@ -1034,4 +1034,8 @@ a:hover .plus-sign {
     padding: 0px 5px !important;
 }
 
+*:focus {
+    outline: none;
+}
+
 #btn_edit_badge_retake_photo {}

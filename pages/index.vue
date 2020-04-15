@@ -46,25 +46,9 @@
               </span>
             </label>
           </div>
-          <div class="form-check">
-            <input
-              type="checkbox"
-              id="chk_optin_receive_emails"
-              class="app-check-input"
-              v-model="optin3d"
-            />
-            <label class="app-check-label" for="chk_optin_receive_emails">
-              <span>
-                (Optional) Opt in to receive email updates and exclusive offers from Lovepop – 3D pop-up cards for every occasion. Read the
-                <a href>Privacy Policy</a> for info use details.
-              </span>
-            </label>
-          </div>
         </div>
-        <div class="clearfix"></div>
         <div class="app-step-btn">
             <button class="btn btn-step" @click="saveEmail()">Next</button>
-            <!-- <nuxt-link to="/badges" class="btn btn-step">Next</nuxt-link> -->
         </div>
       </div>
     </div>
@@ -85,7 +69,6 @@ export default {
     return {
       errors: [],
       optin: true,
-      optin3d: false,
       email: null,
       headerFileName: require("~/assets/img/t-join-crew.png")
     };
@@ -191,6 +174,5 @@ export default {
 .mail-symbol {
   padding-right: 12px;
   padding-left: 12px;
-  height: calc(1.5em + 0.75rem + 2px);
 }
 </style>

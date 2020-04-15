@@ -177,7 +177,6 @@ export default {
       if(this.edit_id == "new_badge") {
         this.$store.state.cadet = this.badge;
         this.$store.state.cadet['character'] = this.badge.characterObj;
-        this.$store.state.cadet['name'] = this.badge.short_name;
         this.$router.push("/new_badge/preview");
       } else {
         let path = "/edit_badge";

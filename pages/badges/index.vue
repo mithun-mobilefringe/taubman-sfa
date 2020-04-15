@@ -16,7 +16,7 @@
               <div class="row pb-3">
                 <div class="col section-title">{{$t('badges.badges_txt')}}</div>
                 <div class="col section-title text-right">
-                  <a href id="btn_home_delete_all" class="text-green">{{$t('badges.delete_all')}}</a>
+                  <a id="btn_home_delete_all" class="text-green" @click='toggleDeleteModalDisplay()'>{{$t('badges.delete_all')}}</a>
                 </div>
               </div>
               <div class="row" v-if="badges">
@@ -25,16 +25,16 @@
                   <div v-for="badge in badges" :key=badge.id>
                   <div class="ubadge-item bg-green" data-id="1">
                     <!-- please replace with actual IDs -->
-                    <div class="ubadge-picture">
-                      <!-- <div class="ubadge-picture-container" style="background-image: url({{ cadet.pic.imageUrl}});"></div> -->
+                    <div v-if="!badge.picture_url" class="ubadge-picture">
                     </div>
+                    <div v-if="badge.picture_url" class="ubadge-picture-container">
+                        <img :src="badge.picture_url" class="badge-picture">
+                      </div>
                     <div class="ubadge-info" @click="viewBadge(badge.id)">
                       <p><strong>
                         {{badge.short_name}} {{badge.codename}}
-                        <!-- {{cadet1.name}} "{{cadet1.elf.name}}" -->
                       </strong></p>
                       <p style="text-align: justify;"><strong>{{getCharacterName(badge.taubman_character_id-1)}}</strong></p>
-                      <!-- {{cadet1.elf.specialty}} -->
                     </div>
                     <div class="ubadge-action">
                       <nuxt-link class="ubadge-button-edit btn" :to="getEditURL(badge.id)">
@@ -210,6 +210,9 @@ export default {
     },
     getEditURL: function(id) {
       return "/badges/edit/" + id;
+    },
+    getImageURL: function() {
+      return this.badge.picture_url;
     }
   },
   beforeMount() {
@@ -236,5 +239,16 @@ export default {
 }
 .ubadge-button-delete, .ubadge-button-edit {
   padding: 0px;
+}
+.badge-picture{
+  background-position: 50% center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 70px;
+    left: 5px;
+    overflow: hidden;
+    position: absolute;
+    top: 5px;
+    width: 55px;
 }
 </style>
