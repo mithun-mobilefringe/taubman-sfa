@@ -21,9 +21,6 @@
                   <div class="fallback">
                     <input name="file" type="file" ref="file" accept="image/*" capture="camera" v-on:change = 'handleFileUpload()'/>
                   </div>
-
-                  <input name="picture_id" type="hidden" id="picture-id" value />
-                  <input name="picture_url" type="hidden" id="picture-url" value />
                 </div>
                 <div class="user-photo-preview" v-if="imageData.length > 0">
                   <img class="preview" :src="imageData">
