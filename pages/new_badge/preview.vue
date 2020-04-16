@@ -189,7 +189,6 @@ export default {
       };
       this.postMethod(path, data).then(
         response => {
-          this.$cookies.set("taubman-profile", response.data.data);
           this.$router.push("/badges");
         },
         error => {
@@ -206,7 +205,6 @@ export default {
           if (profile) {
             this.$store.state.profile = profile;
             this.$store.state.is_new_profile = false;
-            this.$cookies.set("taubman-profile", profile);
             this.$router.push("/badges");
           }
         },

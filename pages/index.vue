@@ -109,7 +109,6 @@ export default {
         if(profile) {
           this.$store.state.profile = profile;
           this.$store.state.is_new_profile = false;
-          this.$cookies.set("taubman-profile", profile);
           this.$router.push('/badges');
         } else {
           this.$store.state.is_new_profile = true;

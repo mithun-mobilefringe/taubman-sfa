@@ -163,7 +163,6 @@ export default {
   },
   methods: {
     loadData: function () {
-      debugger;
       this.profile = this.$store.state.profile;
       if(this.profile) {
         this.badges = this.profile.badges;
@@ -202,7 +201,6 @@ export default {
           this.$store.state.profile = profile;
           this.$store.state.is_new_profile = false;
           this.badges = profile.badges;
-          this.$cookies.set("taubman-profile", profile);
         }
       }, (error) => { 
         console.log("Error: " + error);

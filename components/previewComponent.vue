@@ -17,7 +17,7 @@
         </div>
       </div>
       <div class="id-badge-name">
-        <span>{{badge.name}}</span>
+        <span>{{badge.short_name}}</span>
       </div>
       <div class="id-badge-codename">
         <span>"{{badge.codename}}"</span>

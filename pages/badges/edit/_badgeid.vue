@@ -252,7 +252,7 @@ export default {
         this.$store.state.headerfile = require("~/assets/img/t-create-badge.png");
         this.badge = { ...this.cadet };
         this.badge["characterObj"] = this.badge.character;
-        this.badge["short_name"] = this.badge.name;
+        this.badge["short_name"] = this.badge.short_name;
         if (this.badge && this.badge["file"]) {
           this.loadImage();
         }
@@ -387,7 +387,6 @@ export default {
           if (profile) {
             this.$store.state.profile = profile;
             this.$store.state.is_new_profile = false;
-            this.$cookies.set("taubman-profile", profile);
             this.$router.push("/badges");
           }
         },
