@@ -10,11 +10,17 @@
               <div class="col-sm-5 text-center">
                 <div class="col-sm-10 mx-auto section-edit">
                   <div class="row">
-                    <div class="col review-photo">
+                    {{badge.imageURL}} -image
+                    <div class="col review-photo" v-if="badge.imageURL">
                       <div
                         class="review-photo-container"
                         :style="`background-image: url({{badge.imageURL}});`"
                       ></div>
+                    </div>
+                    <div class="col review-photo" v-if="!badge.imageURL">
+                      <div
+                        class="review-photo-container"
+                      ><img :src="badge.picture_url" class="badge-picture"></div>
                     </div>
                   </div>
 

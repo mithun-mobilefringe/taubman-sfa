@@ -79,7 +79,7 @@ export default {
   },
   created() {
     this.$store.state.headerfile = require("~/assets/img/t-view-badge.png");
-    if (!this.cadet.imageURL) {
+    if (!this.cadet.picture_url) {
       this.cadet[
         "imageURL"
       ] = require("~/assets/img/elfPhotoPlaceholder_160.png");
