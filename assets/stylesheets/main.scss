@@ -855,10 +855,17 @@ a.btn {
 
 .id-badge-mall {
     position: absolute;
-    left: 163px;
-    top: 374px;
+    left: 125px;
+    top: 360px;
     text-align: left;
-    color: #a11528;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 36px;
+    width: 130px;
+    font-size: 0.75em;
+    text-align: center;
+    //color: #a11528;
 }
 
 
