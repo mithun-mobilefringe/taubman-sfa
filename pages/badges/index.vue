@@ -4,7 +4,7 @@
     <div id="box_home" class="container box-home">
       <div class="app-body-full col-sm-9 mx-auto">
         <div class="page-instructions col-sm-6 mx-auto text-center pb-2">
-          <p>Visit The Mall at ShortHills</p>
+          <p>{{property.name}}</p>
           <p>
             Mon–Sat: 10:00am – 9:00pm
             <br />Sundays: 11:00am – 6:00pm
@@ -28,7 +28,7 @@
                     <div v-if="!badge.picture_url" class="ubadge-picture">
                     </div>
                     <div v-if="badge.picture_url" class="ubadge-picture-container">
-                        <img :src="badge.picture_url" class="badge-picture">
+                        <img :alt="badge.short_name" :src="badge.picture_url" class="badge-picture">
                       </div>
                     <div class="ubadge-info" @click="viewBadge(badge.id)">
                       <p><strong>
@@ -118,7 +118,7 @@
           id="btn_choose_guide_sparkle"
           class="btn-choose-guide btn btn-step md"
         >
-          <i class="fa fa-check"></i>  Back to The Mall at Short Hills
+          <i class="fa fa-check"></i>  Back to {{property.name}}
         </a>
       </div>
       <!-- /Delete Modal -->

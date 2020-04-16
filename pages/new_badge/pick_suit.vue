@@ -9,7 +9,7 @@
           <h2
             class="app-lead"
             style="margin-bottom: 10px;"
-          >Choose Todo:Mithun's virtual flight suit, handmade by our special elves.</h2>
+          >Choose {{cadet.short_name}}'s virtual flight suit, handmade by our special elves.</h2>
           <div class="no-form">
             <div class="select-container">
               <div class="selection select-1">

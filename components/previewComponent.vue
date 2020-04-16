@@ -8,12 +8,12 @@
           :style="`background-image: url({{ badge.imageURL}});`"
         ></div>
         <div v-else>
-          <div v-if="is_new_badge">
-            <img class="id-badge-img-container" :src="imageData" />
-          </div>
-          <div v-else>
-            <img class="id-badge-img-container" :src="badge.picture_url" />
-          </div>
+            <div v-if="is_new_badge">
+          <img class="id-badge-img-container" :src="imageData" />
+            </div>
+            <div v-else>
+                <img class="id-badge-img-container" :src="badge.picture_url" />
+            </div>
         </div>
       </div>
       <div class="id-badge-name">
@@ -59,13 +59,13 @@ export default {
   methods: {
     loadData: function() {
       if (this.$route.fullPath.indexOf("new_badge") >= 0) {
-        this.is_new_badge = true;
+          this.is_new_badge = true;
         this.badge = this.cadet;
         if (this.badge && this.badge["file"]) {
           this.loadImage();
         }
       } else {
-        this.is_new_badge = false;
+          this.is_new_badge = false;
         this.getBadge();
       }
     },
@@ -90,12 +90,11 @@ export default {
           badgeData["character"] = this.getCharacterFromName(
             badgeData.character
           );
-          if (badgeData.picture_url == null) {
-            badgeData[
-              "imageURL"
-            ] = require("~/assets/img/elfPhotoPlaceholder_160.png");
+            if(badgeData.picture_url == null) {
+                badgeData['imageURL'] = require("~/assets/img/elfPhotoPlaceholder_160.png");
           }
           this.badge = badgeData;
+          
         },
         error => {
           console.log("Error: " + error);
