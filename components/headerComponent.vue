@@ -2,14 +2,22 @@
   <div>
     <div class="main"></div>
     <div class="header-container col-12">
-      <div class="col-md-3 md-logo display-mobile"></div>
-      <div class="ribbon col-12 col-md-6">
+      <div class="col-lg-4 display-mobile header-logo">
+      <div class="md-logo">
+        <img src="../assets/img/md-logo.png">
+      </div>
+      </div>
+      <div class="ribbon col-12 col-lg-4">
         <div class="logo"></div>
         <div class="app-title">
           <img alt class="header-label" :src="headerfile"/>
         </div>
       </div>
-      <div class="header-santa col-md-3 display-mobile"></div>
+      <div class="col-lg-4 display-mobile header-santa-logo">
+      <div class="md-logo">
+        <img src="../assets/img/decor1.png">
+      </div>
+      </div>
     </div>
   </div>
 </template>
@@ -110,18 +118,17 @@ export default {
   margin-top: 5px;
 }
 .md-logo {
-  background: url("../assets/img/md-logo.png") no-repeat;
-  width: 100%;
-  min-height: 320px;
   z-index: 20;
-  left: 30px;
 }
-.header-santa {
-  background: url("../assets/img/decor1.png") no-repeat;
-  width: 100%;
-  min-height: 350px;
+.header-logo {
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 35px;
+}
+.header-santa-logo {
   top: -65px;
-  z-index: 20;
-  left: 90px;
+  padding-right: 35px;
+  display: flex;
+  justify-content: flex-end;
 }
 </style>

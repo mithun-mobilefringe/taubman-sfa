@@ -140,7 +140,8 @@ export default {
     return {
       badges: [],
       delete_modal: false,
-      badge_id_to_be_deleted: null
+      badge_id_to_be_deleted: null,
+      hours: null
     };
   },
   beforeRouteUpdate(to, from, next) {
@@ -148,7 +149,7 @@ export default {
   },
   created() {
     this.$store.state.headerfile = require("~/assets/img/t-your-badges.png");
-    
+    debugger;
       
   },
   computed: {
@@ -167,6 +168,16 @@ export default {
       if(this.profile) {
         this.badges = this.profile.badges;
       }
+      this.loadHours();
+    },
+    loadHours:function() {
+      let path = "/get_mall_hours";
+        let data = {};
+      this.postMethod(path,data).then(response => {
+        this.hours = response.data.data;
+      }, (error) => { 
+        console.log("Error: " + error);
+      });
     },
     viewBadge: function(id) {
       let nextPageURL = '/badges/view/' + id;

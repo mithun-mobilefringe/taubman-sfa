@@ -131,6 +131,7 @@
                 <div id="box_edit_badge_guides" class="col-sm-11 ml-0 section-edit section-helpers">
                   <div class="section-title text-center">My guide</div>
                   <div class="row">
+                    <div style="display:none;">{{badge}}</div>
                     <div class="col">
                       <div
                         class="edit-guide edit-guide-1"

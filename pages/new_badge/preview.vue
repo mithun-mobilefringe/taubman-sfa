@@ -90,6 +90,10 @@ export default {
       this.cadet[
         "imageURL"
       ] = require("~/assets/img/elfPhotoPlaceholder_160.png");
+    } else {
+        this.cadet[
+        "imageURL"
+      ] = '';
     }
   },
   computed: {
