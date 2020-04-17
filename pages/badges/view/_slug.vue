@@ -70,8 +70,6 @@ export default {
   },
   data: function() {
     return {
-      errors: [],
-      agree_terms: false
     };
   },
   beforeRouteUpdate(to, from, next) {

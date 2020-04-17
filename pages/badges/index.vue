@@ -114,7 +114,7 @@
       </div>
       <div class="text-center btn-margin-top">
         <a
-          href
+          :href= property.url
           id="btn_choose_guide_sparkle"
           class="btn-choose-guide btn btn-step md"
         >

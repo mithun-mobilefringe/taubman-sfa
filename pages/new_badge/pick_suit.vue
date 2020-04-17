@@ -3,7 +3,7 @@
     <!-- Cadet Builder -->
     <div>
       <!-- Choose Suit -->
-      <div id="box_cadet_choose_suit" class="container box-home new-badge-container">
+      <div id="box_cadet_choose_suit" class="container box-home new-suit-container">
         <div class="step step-2"></div>
         <div class="col-sm-6 mx-auto">
           <h2
@@ -79,5 +79,10 @@ export default {
 .create-badge-link {
   display: flex;
   cursor: pointer;
+}
+@media (min-width: 1025px) {
+  .new-suit-container {
+    margin-top: 46px 
+  }
 }
 </style>

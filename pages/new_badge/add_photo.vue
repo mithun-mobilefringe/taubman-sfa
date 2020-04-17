@@ -5,7 +5,7 @@
       <!-- Picture -->
       <div id="box_cadet_upload_pic">
         <!-- Picture Upload -->
-        <div class="container box-home new-badge-container">
+        <div class="container box-home add-photo-container">
           <div class="step step-3"></div>
           <div class="col-sm-6 mx-auto">
             <h2 class="app-lead">Add a photo to use on : {{cadet.short_name}}'s badge.</h2>
@@ -161,5 +161,10 @@ export default {
   overflow: hidden;
   position: relative;
   width: 160px;
+}
+@media (min-width: 1025px) {
+  .add-photo-container {
+    margin-top: 24px !important;
+  }
 }
 </style>

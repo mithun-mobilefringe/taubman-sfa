@@ -25,8 +25,8 @@
               </div>
             </div>
           </div>
-          <div class="form-row" v-if="errors">
-              <div class="form-group col" v-for="error in errors" :key="error">
+          <div class="form-row" v-if="emailErrors">
+              <div class="form-group col" v-for="error in emailErrors" :key="error">
                   <div class="form-error">{{error}}</div>
               </div>
           </div>
@@ -67,7 +67,7 @@ import Cookies from "js-cookie";
 export default {
   data: function() {
     return {
-      errors: [],
+      emailErrors: [],
       optin: true,
       email: null,
       headerFileName: require("~/assets/img/t-join-crew.png")
@@ -92,7 +92,7 @@ export default {
   },
   methods: {
     saveEmail: function() {
-      this.errors = [];
+      this.emailErrors = [];
       if(this.checkform()){
         this.$store.state.email = this.email;
         this.$cookies.set("taubman-"+ this.property.id +"-email", this.email);
@@ -120,12 +120,12 @@ export default {
     },
     checkform: function() {
       if (!this.email) {
-        this.errors.push('Please Enter your Email Address');
+        this.emailErrors.push('Please Enter your Email Address');
       } else if (!this.validEmail(this.email)) {
-        this.errors.push('Valid email required');
+        this.emailErrors.push('Valid email required');
       }
 
-      if (!this.errors.length) {
+      if (!this.emailErrors.length) {
         return true;
       }
     },

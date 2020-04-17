@@ -31,9 +31,9 @@
                 </label>
               </div>
             </div>
-            <div id="box_cadet_preview_error" class="form-row" v-if="errors.length > 0">
+            <div id="box_cadet_preview_error" class="form-row" v-if="previewErrors.length > 0">
               <div class="form-group col">
-                <div class="form-error">{{errors[0]}}</div>
+                <div class="form-error">{{previewErrors[0]}}</div>
               </div>
             </div>
           </div>
@@ -76,7 +76,7 @@ export default {
   },
   data: function() {
     return {
-      errors: [],
+      previewErrors: [],
       agree_terms: false,
       badgeToBeAdded: null
     };
@@ -105,7 +105,7 @@ export default {
   },
   methods: {
     approveBadge: function() {
-      this.errors = [];
+      this.previewErrors = [];
       if (this.agree_terms) {
           this.getBadgeData();
         /* if (this.is_new_profile) {
@@ -114,7 +114,7 @@ export default {
           this.addBadge();
         } */
       } else {
-        this.errors.push(
+        this.previewErrors.push(
           "You must agree to the Terms and understand the Privacy Policy to proceed!"
         );
       }

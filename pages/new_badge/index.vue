@@ -19,7 +19,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div id="box_create_badge_name_error" class="form-row" v-if="errors.length > 0">
+                            <div id="box_create_badge_name_error" class="form-row" v-if="nameErrors.length > 0">
                                 <div class="form-group col">
                                     <div class="form-error" id="invalid-name">{{$t('error.invalid_name')}}</div>
                                     <!-- <div class="form-error" id="invalid-length">{{$t('error.invalid_name_length')}}</div> -->
@@ -29,7 +29,7 @@
                                 <div class="col green-text">{{$t('new_badge.add_later')}}</div>
                             </div>          
                             <div class="clearfix"></div>
-                            <div class="app-step-btn text-right">
+                            <div class="app-step-btn">
                               <button id="btn_create_badge_name_next" class="btn btn-step" @click="saveName()">{{$t('app.next')}}</button>
                             </div>
                         </div>          
@@ -53,7 +53,7 @@ export default {
   },
   data: function() {
     return {
-      errors: [],
+      nameErrors: [],
       cadetName: ""
     };
   },
@@ -69,14 +69,14 @@ export default {
   },
   methods: {
     saveName: function () {
-      this.errors = [];
+      this.nameErrors = [];
       if(this.cadetName.length > 0){
         let cadet = {};
         cadet['short_name'] = this.cadetName;
         this.$store.state.cadet = cadet;
         this.$router.push('/new_badge/pick_suit');
       } else {
-        this.errors.push('Please Enter your Name');
+        this.nameErrors.push('Please Enter your Name');
       }
     }
   }
@@ -85,7 +85,7 @@ export default {
 <style>
 @media (min-width: 1025px){
     .name-new-badge-container {
-        margin-top: 8px;
+        margin-top: 3px;
 }
 }
 
