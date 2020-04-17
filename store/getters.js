@@ -22,7 +22,7 @@ const getters = {
     },
     profile: state => state.profile,
     badge: state => state.badge,
-    email: state => state.profile,
+    email: state => state.email,
     is_new_profile: state => state.is_new_profile,
     characters: state => state.characters,
     cadet: state => state.cadet

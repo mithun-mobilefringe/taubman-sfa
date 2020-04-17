@@ -80,10 +80,13 @@ export default {
     let ppt = this.$cookies.get("taubman-property");
     this.property = ppt;
     let mailID = this.$cookies.get("taubman-"+ this.property.id +"-email");
+    debugger;
     if(mailID){
       this.email = mailID;
       this.$store.state.email = mailID;
       this.getProfile();
+    } else {
+      this.$store.state.is_new_profile = true;
     }
     
   },
@@ -106,12 +109,11 @@ export default {
         }
       this.postMethod(path,data).then(response => {
         var profile = response.data.data;
-        if(profile) {
+        if(!this.$store.state.is_new_profile) {
           this.$store.state.profile = profile;
           this.$store.state.is_new_profile = false;
           this.$router.push('/badges');
         } else {
-          this.$store.state.is_new_profile = true;
           this.$router.push('/new_badge');
         }
       }, (error) => { 

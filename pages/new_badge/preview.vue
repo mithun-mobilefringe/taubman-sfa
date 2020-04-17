@@ -125,7 +125,6 @@ export default {
     },
     getBadgeData: function() {
       this.badgeToBeAdded = {
-        profile_id: this.profile.profile_id,
         short_name: this.cadet.short_name,
         gender: this.cadet.gender,
         character: this.cadet.character.character_name,
@@ -173,6 +172,7 @@ export default {
     },
     addBadge: function(badgeData) {
         var path = "/add_badge";
+        badgeData['profile_id'] = this.profile.profile_id;
         var data = badgeData;
 
         this.postMethod(path, data).then(
@@ -193,7 +193,7 @@ export default {
       };
       this.postMethod(path, data).then(
         response => {
-          this.$router.push("/badges");
+          this.updateProfile();
         },
         error => {
           console.log("Error: " + error);
@@ -202,7 +202,8 @@ export default {
     },
     updateProfile: function() {
       let path = "/get_profile_by_email";
-      let data = this.email;
+      let data = {
+        'email': this.email};
       this.postMethod(path, data).then(
         response => {
           var profile = response.data.data;
