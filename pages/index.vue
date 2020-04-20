@@ -109,7 +109,7 @@ export default {
         }
       this.postMethod(path,data).then(response => {
         var profile = response.data.data;
-        if(!this.$store.state.is_new_profile) {
+        if(!this.$store.state.is_new_profile && profile) {
           this.$store.state.profile = profile;
           this.$store.state.is_new_profile = false;
           this.$router.push('/badges');

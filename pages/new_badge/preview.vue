@@ -188,7 +188,7 @@ export default {
       let path = "/add_profile";
       let data = {
         email: this.email,
-        confirmation_code: "A123456789",
+        confirmation_code: this.getAlphaNumeric(8),
         badges: [badgeData]
       };
       this.postMethod(path, data).then(
