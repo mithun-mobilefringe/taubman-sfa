@@ -114,6 +114,7 @@ export default {
           this.$store.state.is_new_profile = false;
           this.$router.push('/badges');
         } else {
+          this.$store.state.is_new_profile = true;
           this.$router.push('/new_badge');
         }
       }, (error) => { 

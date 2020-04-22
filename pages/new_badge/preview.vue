@@ -91,9 +91,7 @@ export default {
         "imageURL"
       ] = require("~/assets/img/elfPhotoPlaceholder_160.png");
     } else {
-        this.cadet[
-        "imageURL"
-      ] = '';
+      this.cadet["imageURL"] = "";
     }
   },
   computed: {
@@ -111,7 +109,7 @@ export default {
     approveBadge: function() {
       this.previewErrors = [];
       if (this.agree_terms) {
-          this.getBadgeData();
+        this.getBadgeData();
         /* if (this.is_new_profile) {
           this.addProfile();
         } else {
@@ -163,26 +161,26 @@ export default {
         this.addprofileOrBadge(this.badgeToBeAdded);
       }
     },
-    addprofileOrBadge: function(badgeData){
-        if (this.is_new_profile) {
-          this.addProfile(badgeData);
-        } else {
-          this.addBadge(badgeData);
-        }
+    addprofileOrBadge: function(badgeData) {
+      if (this.is_new_profile) {
+        this.addProfile(badgeData);
+      } else {
+        this.addBadge(badgeData);
+      }
     },
     addBadge: function(badgeData) {
-        var path = "/add_badge";
-        badgeData['profile_id'] = this.profile.profile_id;
-        var data = badgeData;
+      var path = "/add_badge";
+      badgeData["profile_id"] = this.profile.profile_id;
+      var data = badgeData;
 
-        this.postMethod(path, data).then(
+      this.postMethod(path, data).then(
         response => {
-            this.updateProfile();
+          this.sendEmail();
         },
         error => {
-            console.log("Error: " + error);
+          console.log("Error: " + error);
         }
-        );
+      );
     },
     addProfile: function(badgeData) {
       let path = "/add_profile";
@@ -190,6 +188,24 @@ export default {
         email: this.email,
         confirmation_code: this.getAlphaNumeric(8),
         badges: [badgeData]
+      };
+      this.postMethod(path, data).then(
+        response => {
+          this.sendEmail();
+        },
+        error => {
+          console.log("Error: " + error);
+        }
+      );
+    },
+    sendEmail: function() {
+      let path = "/send_email";
+      let data = {
+        email: this.email,
+        replacements: {
+          firstname: this.cadet.short_name,
+          video_url: "http://www.whatever.com/video"
+        }
       };
       this.postMethod(path, data).then(
         response => {
@@ -203,7 +219,8 @@ export default {
     updateProfile: function() {
       let path = "/get_profile_by_email";
       let data = {
-        'email': this.email};
+        email: this.email
+      };
       this.postMethod(path, data).then(
         response => {
           var profile = response.data.data;
@@ -225,6 +242,11 @@ export default {
 .preview-box {
   margin-top: 60px;
   width: 570px;
+}
+@media(max-width: 768px) {
+  .preview-box {
+    width: 100% !important;
+  }
 }
 @media (min-width: 769px) and (max-width: 1025px) {
   .preview-box {
