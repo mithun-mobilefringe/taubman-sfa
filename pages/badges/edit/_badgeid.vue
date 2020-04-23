@@ -372,24 +372,8 @@ export default {
       let path = "/edit_badge";
       this.postMethod(path, this.badge).then(
         response => {
-          this.updateProfile(response.data.data);
-        },
-        error => {
-          console.log("Error: " + error);
-        }
-      );
-    },
-    updateProfile: function(responseBadge) {
-      let path = "/get_profile_by_email";
-      let data = this.email;
-      this.postMethod(path, data).then(
-        response => {
-          var profile = response.data.data;
-          if (profile) {
-            this.$store.state.profile = profile;
-            this.$store.state.is_new_profile = false;
-            this.$router.push("/badges");
-          }
+          this.$router.push("/badges");
+          //this.updateProfile(response.data.data);
         },
         error => {
           console.log("Error: " + error);

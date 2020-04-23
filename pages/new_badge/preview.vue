@@ -191,7 +191,6 @@ export default {
       };
       this.postMethod(path, data).then(
         response => {
-          this.$cookies.set("taubman-"+ this.property.id +"-email", this.email);
           this.sendEmail();
         },
         error => {
@@ -201,6 +200,7 @@ export default {
     },
     sendEmail: function() {
       let path = "/send_email";
+      this.$cookies.set("taubman-"+ this.property.id +"-email", this.email);
       let data = {
         email: this.email,
         replacements: {
@@ -210,26 +210,9 @@ export default {
       };
       this.postMethod(path, data).then(
         response => {
-          this.updateProfile();
-        },
-        error => {
-          console.log("Error: " + error);
-        }
-      );
-    },
-    updateProfile: function() {
-      let path = "/get_profile_by_email";
-      let data = {
-        email: this.email
-      };
-      this.postMethod(path, data).then(
-        response => {
-          var profile = response.data.data;
-          if (profile) {
-            this.$store.state.profile = profile;
-            this.$store.state.is_new_profile = false;
-            this.$router.push("/badges");
-          }
+          this.$store.state.is_new_profile = false;
+          this.$router.push("/badges");
+          //this.updateProfile();
         },
         error => {
           console.log("Error: " + error);

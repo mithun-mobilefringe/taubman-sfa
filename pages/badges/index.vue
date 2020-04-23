@@ -149,6 +149,7 @@ export default {
   },
   created() {
     this.$store.state.headerfile = require("~/assets/img/t-your-badges.png");
+    this.updateProfile();
     debugger;
   },
   computed: {
@@ -204,7 +205,9 @@ export default {
     },
     updateProfile: function () {
         let path = "/get_profile_by_email";
-        let data = this.email;
+        let data = {
+          "email": this.email,
+        }
       this.postMethod(path,data).then(response => {
         var profile = response.data.data;
         if(profile) {

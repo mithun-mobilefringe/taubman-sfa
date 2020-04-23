@@ -35,7 +35,13 @@ export default {
               this.$cookies.set("taubman-property", this.property);
               this.getCharacters();
               this.$store.state.locale = this.$i18n.locale;
-              this.$router.push('/');
+              debugger;
+              if(this.$cookies.get("taubman-"+ this.property.id +"-email")) {
+                this.$store.state.email = this.$cookies.get("taubman-"+ this.property.id +"-email");
+                this.$router.push('/badges');
+              } else {
+                this.$router.push('/');
+              }
           }, (error) => { 
             console.log("Error: " + error);
               //this.handleError(error,{type:'API',request:'getRequest',path:path});
