@@ -33,9 +33,19 @@ module.exports = {
         "invalid_name": "Invalid name!",
         "invalid_name_length": "Child's name must be between 1-10 characters in length"
     },
+    "edit_badge": {
+        "my_guide": "My Guide",
+        "my_suit": "My Suit"
+    },
     "app": {
         "next": "Next",
         "choose": "Choose",
-        "edit_badge": "Edit Badge"
+        "edit_badge": "Edit Badge",
+        "cancel": "Cancel",
+        "preview": "Preview",
+        "save": "Save",
+        "choose_new_photo": "Choose new photo",
+        "dont_use_photo": "Don't use a photo",
+        "use_original": "Use Original"
     }
 }

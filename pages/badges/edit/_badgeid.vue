@@ -72,7 +72,7 @@
                         @click="cancelSelectionPhoto()"
                         v-if="!badge.picture_url"
                       >
-                        <i class="fa fa-1x fa-times"></i> Cancel
+                        <i class="fa fa-1x fa-times"></i> {{$t('app.cancel')}}
                       </a>
 
                       <a
@@ -81,7 +81,7 @@
                         @click="cancelSelectionPhoto()"
                         v-if="badge.picture_url"
                       >
-                        <i class="fa fa-1x fa-refresh"></i> Use Original
+                        <i class="fa fa-1x fa-refresh"></i> {{$t('app.use_original')}}
                       </a>
                     </div>
                   </div>
@@ -93,7 +93,7 @@
                         class="btn btn-outline-puti"
                         @click="chooseNewPhoto()"
                       >
-                        <i class="fa fa-1x fa-camera"></i> Choose new photo
+                        <i class="fa fa-1x fa-camera"></i> {{$t('app.choose_new_photo')}}
                       </a>
                     </div>
                   </div>
@@ -105,7 +105,7 @@
                         class="btn btn-outline-puti"
                         @click="dontUsePhoto()"
                       >
-                        <i class="fa fa-1x fa-times"></i> Don't use a Photo
+                        <i class="fa fa-1x fa-times"></i> {{$t('app.dont_use_photo')}}
                       </a>
                     </div>
                   </div>
@@ -129,7 +129,7 @@
               </div>
               <div class="col-sm-4 text-center">
                 <div id="box_edit_badge_guides" class="col-sm-11 ml-0 section-edit section-helpers">
-                  <div class="section-title text-center">My guide</div>
+                  <div class="section-title text-center">{{$t('edit_badge.my_guide')}}</div>
                   <div class="row">
                     <div style="display:none;">{{badge}}</div>
                     <div class="col">
@@ -160,7 +160,7 @@
               </div>
               <div class="col-sm-3">
                 <div id="box_edit_badge_suits" class="col-sm-12 section-edit section-suits">
-                  <div class="section-title text-center">My suit</div>
+                  <div class="section-title text-center">{{$t('edit_badge.my_suit')}}</div>
                   <div class="form-row">
                     <div class="col-sm-6 text-center">
                       <div
@@ -190,7 +190,7 @@
                 @click="editBadgeFormData()"
               >
                 <i class="fa fa-check"></i>
-                <span style="padding: 0 60px 0 40px;">Save</span>
+                <span style="padding: 0 60px 0 40px;">{{$t('app.save')}}</span>
               </button>
             </div>
             <!-- this could be hidden when adding a new badge -->
@@ -201,12 +201,12 @@
                 @click="editBadgeFormData()"
               >
                 <i class="fa fa-check"></i>
-                <span style="padding: 0 60px 0 40px;">Preview</span>
+                <span style="padding: 0 60px 0 40px;">{{$t('app.preview')}}</span>
               </button>
             </div>
             <div>
               <a id="btn_edit_badge_cancel" class="btn_edit_badge_cancel" @click="cancelEdit()">
-                <i class="fa fa-times"></i> Cancel
+                <i class="fa fa-times"></i> {{$t('app.cancel')}}
               </a>
             </div>
             <!-- /this could be hidden when adding a new badge -->

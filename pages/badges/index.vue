@@ -69,7 +69,7 @@
               <p
                 style="padding:10px 0;"
               >{{$t('badges.skip_line_text')}}</p>
-              <a href id="btn_home_fast_pass" class="btn btn-white btn-home-fast-pass" style="color: white;">
+              <a href="https://www.santasfastpass.com/view/9d0spM7W/cherry-creek?utm_campaign=cherry-creek&utm_medium=direct_link&utm_source=studio_link" id="btn_home_fast_pass" class="btn btn-white btn-home-fast-pass" style="color: white;">
                 {{$t('badges.skip_line_button')}}
               </a>
             </div>
@@ -150,7 +150,6 @@ export default {
   created() {
     this.$store.state.headerfile = require("~/assets/img/t-your-badges.png");
     debugger;
-      
   },
   computed: {
     ...mapGetters([

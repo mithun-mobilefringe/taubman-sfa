@@ -191,6 +191,7 @@ export default {
       };
       this.postMethod(path, data).then(
         response => {
+          this.$cookies.set("taubman-"+ this.property.id +"-email", this.email);
           this.sendEmail();
         },
         error => {

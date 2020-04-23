@@ -98,7 +98,6 @@ export default {
       this.emailErrors = [];
       if(this.checkform()){
         this.$store.state.email = this.email;
-        this.$cookies.set("taubman-"+ this.property.id +"-email", this.email);
         this.getProfile();
       }
     },
@@ -109,7 +108,7 @@ export default {
         }
       this.postMethod(path,data).then(response => {
         var profile = response.data.data;
-        if(!this.$store.state.is_new_profile && profile) {
+        if(!this.$store.state.is_new_profile || profile) {
           this.$store.state.profile = profile;
           this.$store.state.is_new_profile = false;
           this.$router.push('/badges');

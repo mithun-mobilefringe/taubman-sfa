@@ -80,7 +80,7 @@ export default {
     background-size: 100% 82px;
   }
   .display-mobile {
-    display: none;
+    display: none !important;
   }
   .header-label {
   width: 180px !important;
