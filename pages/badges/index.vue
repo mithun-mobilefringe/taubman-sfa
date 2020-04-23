@@ -99,12 +99,12 @@
                 </div>
                 <div class="row">
                   <div class="col">
-                    <button id="btn_home_delete_confirm" class="btn btn-step" @click="deleteBadge()">Yes, Delete</button>
+                    <button id="btn_home_delete_confirm" class="btn btn-step" @click="deleteBadge()">{{$t('badges.yes_delete')}}</button>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col">
-                    <a id="btn_home_delete_cancel" class="btn btn-step white" @click="toggleDeleteModalDisplay()">No, Cancel</a>
+                    <a id="btn_home_delete_cancel" class="btn btn-step white" @click="toggleDeleteModalDisplay()">{{$t('badges.no_cancel')}}</a>
                   </div>
                 </div>
               </div>
@@ -171,6 +171,7 @@ export default {
       this.loadHours();
     },
     loadHours:function() {
+      
       let path = "/get_mall_hours";
         let data = {};
       this.postMethod(path,data).then(response => {

@@ -14,11 +14,14 @@ module.exports = {
         "skip_line_heading": "Skip the long lines!",
         "create_badge": "Create new badge",
         "badges_txt": "Your Badges",
-        "delete_all": "Delete All"
+        "delete_all": "Delete All",
+        "yes_delete": "Yes, Delete",
+        "no_cancel": "No, Cancel"
     },
     "new_badge": {
         "heading": "Naughty or nice? Who is going to be helping Santa this year?",
-        "add_later": "(You'll be able to add more cadets later)"
+        "add_later": "(You'll be able to add more cadets later)",
+        "choose_me": "Choose me!"
     },
     "add_photo": {
         "use_photo": "Use this Photo",
@@ -46,6 +49,7 @@ module.exports = {
         "save": "Save",
         "choose_new_photo": "Choose new photo",
         "dont_use_photo": "Don't use a photo",
-        "use_original": "Use Original"
+        "use_original": "Use Original",
+        "back": "Back"
     }
 }

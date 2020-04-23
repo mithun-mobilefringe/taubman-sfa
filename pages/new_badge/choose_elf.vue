@@ -20,7 +20,7 @@
                   <a href class="guide-bio-close" @click="onCloseBioClick($event, elf)">Close</a>-->
                 </div>
                 <button to="/new_badge/preview" @click="onElfClick(elf)" class="btn btn-step md">
-                  <i class="fa fa-check"></i> Choose me!
+                  <i class="fa fa-check"></i> {{$t('new_badge.choose_me')}}
                 </button>
               </div>
             </div>

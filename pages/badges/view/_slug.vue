@@ -9,26 +9,6 @@
             <div class="row">
               <div class="col text-center py-2">
                   <previewComponent></previewComponent>
-                <!-- <div class="id-badge-container">
-                  <div class="id-badge-img">
-                    <div
-                      class="id-badge-img-container"
-                      :style="`background-image: url({{ cadet.imageURL}});`"
-                    ></div>
-                  </div>
-                  <div class="id-badge-name">
-                    <span>{{cadet.name}}</span>
-                  </div>
-                  <div class="id-badge-codename">
-                    <span>"{{cadet.character.name}}"</span>
-                  </div>
-                  <div class="id-badge-specialty">
-                    <span>{{JSON.parse(this.cadet.character.job_title)[this.locale]}}</span>
-                  </div>
-                  <div class="id-badge-mall">
-                    <span>{{property.name}}</span>
-                  </div>
-                </div> -->
               </div>
             </div>
           </div>
@@ -47,7 +27,7 @@
               style="color: #6abaad;"
             >
               <i class="fa fa-arrow-left"></i>
-              Back
+              {{$t('app.back')}}
             </nuxt-link>
           </div>
         </div>
