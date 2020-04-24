@@ -80,7 +80,6 @@ export default {
     let ppt = this.$cookies.get("taubman-property");
     this.property = ppt;
     let mailID = this.$cookies.get("taubman-"+ this.property.id +"-email");
-    debugger;
     if(mailID){
       this.email = mailID;
       this.$store.state.email = mailID;
