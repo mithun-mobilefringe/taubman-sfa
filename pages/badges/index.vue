@@ -75,7 +75,7 @@
               <h3>{{$t('badges.skip_line_heading')}}</h3>
               <p style="padding:10px 0;">{{$t('badges.skip_line_text')}}</p>
               <a
-                href="https://www.santasfastpass.com/view/9d0spM7W/cherry-creek?utm_campaign=cherry-creek&utm_medium=direct_link&utm_source=studio_link"
+                :href="getSkipLineLink()"
                 id="btn_home_fast_pass"
                 class="btn btn-white btn-home-fast-pass"
                 style="color: white;"
@@ -281,6 +281,9 @@ export default {
     },
     getImageURL: function() {
       return this.badge.picture_url;
+    },
+    getSkipLineLink: function() {
+      return JSON.parse(this.property.meta_data).SFA.skip_line_link;
     }
   },
   beforeMount() {
