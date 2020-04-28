@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- Cadets List (All Done) -->
-    <div id="box_home" class="container box-home">
+    <div id="box_home" class="container box-home badge-list-box-home">
       <div class="app-body-full col-sm-9 mx-auto">
         <div class="page-instructions col-sm-6 mx-auto text-center pb-2">
           <p>Visit {{property.name}} to print your badge and experience Santa's Flight Academy.</p>
@@ -167,7 +167,6 @@ export default {
   },
   created() {
     this.$store.state.headerfile = require("~/assets/img/t-your-badges.png");
-    this.updateProfile();
   },
   computed: {
     ...mapGetters([
@@ -181,10 +180,7 @@ export default {
   },
   methods: {
     loadData: function() {
-      this.profile = this.$store.state.profile;
-      if (this.profile) {
-        this.badges = this.profile.badges;
-      }
+      this.updateProfile();
       this.loadHours();
     },
     loadHours: function() {
@@ -328,8 +324,13 @@ export default {
 }
 .mall-hours-days {
   display: flex;
-  flex: 0.3;
+  flex: 0.4;
   justify-content: flex-end;
   margin-right: 10px;
+}
+@media (min-width: 1025px) {
+  .badge-list-box-home {
+    margin-top: 100px;
+  }
 }
 </style>

@@ -21,10 +21,6 @@ export default {
     //SocialSharing: () => import('vue-social-sharing'),
   },
   created() {
-    let ppt = this.$cookies.get("taubman-property");
-    if(ppt) {
-      this.$store.state.property = ppt;
-    } else {
       this.property_id = this.$route.params.slug;
       let path = "/get_property/?property_id=" + this.property_id;
           this.$store.dispatch("getRequest", {
@@ -45,21 +41,9 @@ export default {
             console.log("Error: " + error);
               //this.handleError(error,{type:'API',request:'getRequest',path:path});
           });
-    }
     
     
-  },
-  computed: {
-    /* ...mapGetters([
-      'property',
-      'processedEvents',
-      'findEventBySlug',
-      'findEventById',
-      'timezone',
-      'findRepoByName',
-      'findHourById',
-      'locale'
-    ]), */
+    
   },
   methods: {
     getCharacters: function () {
