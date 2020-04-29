@@ -6,10 +6,10 @@
         <div class="page-instructions col-sm-6 mx-auto text-center pb-2">
           <p>Visit {{property.name}} to print your badge and experience Santa's Flight Academy.</p>
           <div v-if="regHours.length>0">
-          <div v-for="(reghour,i) in regHours" class="mall-hours">
-            <div class="mall-hours-days">{{days[i]}}:</div>
-            <div>{{reghour}}</div>
-          </div>
+            <div v-for="(reghour,i) in regHours" class="mall-hours">
+              <div class="mall-hours-days">{{days[i]}}:</div>
+              <div>{{reghour}}</div>
+            </div>
           </div>
         </div>
         <div class="row">
@@ -20,7 +20,7 @@
                 <div class="col section-title text-right">
                   <a
                     id="btn_home_delete_all"
-                    class="text-green"
+                    class="text-green btn"
                     @click="toggleDeleteModalDisplay()"
                   >{{$t('badges.delete_all')}}</a>
                 </div>
@@ -175,7 +175,8 @@ export default {
       "locale",
       "email",
       "is_new_profile",
-      "characters"
+      "characters",
+      "profile"
     ])
   },
   methods: {
@@ -222,7 +223,7 @@ export default {
           let splitDays = this.days[i].split(",");
           this.days[i] = splitDays[0] + " - " + splitDays[splitDays.length - 1];
         } else {
-          this.days[i] = this.days[i].concat("days")
+          this.days[i] = this.days[i].concat("days");
         }
         this.regHours[i] = this.regHours[i].replace("to", "-");
       }
@@ -232,9 +233,30 @@ export default {
       this.$router.push(nextPageURL);
     },
     deleteBadge: function() {
-      let path = "/delete_badge";
+      debugger;
+      if (this.badge_id_to_be_deleted) {
+        let path = "/delete_badge";
+        let data = {
+          badge_id: this.badge_id_to_be_deleted
+        };
+        this.postMethod(path, data).then(
+          response => {
+            this.badge_id_to_be_deleted = null;
+            this.delete_modal = !this.delete_modal;
+            this.updateProfile();
+          },
+          error => {
+            console.log("Error: " + error);
+          }
+        );
+      } else {
+        this.deleteAllBadge();
+      }
+    },
+    deleteAllBadge: function() {
+      let path = "/delete_all_badges";
       let data = {
-        badge_id: this.badge_id_to_be_deleted
+        'profile_id': this.profile.profile_id
       };
       this.postMethod(path, data).then(
         response => {
@@ -333,8 +355,8 @@ export default {
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
-    .badge-list-box-home {
-      margin-top: 121px !important;
-    }
+  .badge-list-box-home {
+    margin-top: 121px !important;
+  }
 }
 </style>
