@@ -200,7 +200,7 @@ export default {
     },
     sendEmail: function() {
       let path = "/send_email";
-      this.$cookies.set("taubman-"+ this.property.id +"-email", this.email);
+      this.setCookies("taubman-"+ this.property.id +"-email", this.email);
       let data = {
         email: this.email,
         replacements: {

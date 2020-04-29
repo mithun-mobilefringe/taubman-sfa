@@ -324,7 +324,6 @@ export default {
 }
 .mall-hours-days {
   display: flex;
-  flex: 0.4;
   justify-content: flex-end;
   margin-right: 10px;
 }
@@ -332,5 +331,10 @@ export default {
   .badge-list-box-home {
     margin-top: 100px;
   }
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    .badge-list-box-home {
+      margin-top: 121px !important;
+    }
 }
 </style>

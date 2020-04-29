@@ -36,5 +36,11 @@ Vue.mixin({
         getAlphaNumeric(length) {
             return Math.random().toString(36).slice(2, length + 2);
         },
+        setCookies(name, val) {
+            this.$cookies.set(name, val);
+        },
+        getCookies(name) {
+            return this.$cookies.get(name);
+        }
     }
 })

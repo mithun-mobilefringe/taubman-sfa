@@ -85,4 +85,21 @@ export default {
     margin-top: 46px 
   }
 }
+@media (max-width: 414px) {
+  .new-suit-container {
+    margin-top: 61px !important;
+  }
+}
+@media (max-width: 768px) {
+  .new-suit-container {
+    margin-top: 86px !important;
+    justify-content: start;
+  }
+}
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+    .new-suit-container {
+      margin-top: 121px !important;
+      justify-content: start;
+    }
+}
 </style>

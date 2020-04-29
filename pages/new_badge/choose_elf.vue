@@ -19,7 +19,7 @@
                   <!-- <span>elf.key</span>
                   <a href class="guide-bio-close" @click="onCloseBioClick($event, elf)">Close</a>-->
                 </div>
-                <button to="/new_badge/preview" @click="onElfClick(elf)" class="btn btn-step md">
+                <button to="/new_badge/preview" @click="onElfClick(elf)" class="btn btn-step md elf-button">
                   <i class="fa fa-check"></i> {{$t('new_badge.choose_me')}}
                 </button>
               </div>
@@ -79,5 +79,11 @@ export default {
 .create-badge-link {
   display: flex;
   cursor: pointer;
+}
+@media only screen and (max-width: 768px) and (min-width: 640px){
+.elf-button {
+    width: 100%;
+    font-size: 1.2rem !important;
+}
 }
 </style>

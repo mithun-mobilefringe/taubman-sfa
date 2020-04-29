@@ -20,6 +20,7 @@
                   type="email"
                   class="form-control py-2 border-light icon-email"
                   placeholder="santa@exmas.com"
+                  v-on:keyup.enter="saveEmail()" 
                   v-model="email"
                 />
               </div>
@@ -76,10 +77,10 @@ export default {
   components: {
   },
   created() {
-    this.$store.state.headerfile = require("~/assets/img/t-join-crew.png")
-    let ppt = this.$cookies.get("taubman-property");
+    this.$store.state.headerfile = require("~/assets/img/t-join-crew.png");
+    let ppt = this.getCookies("taubman-property");
     this.property = ppt;
-    let mailID = this.$cookies.get("taubman-"+ this.property.id +"-email");
+    let mailID = this.getCookies("taubman-"+ this.property.id +"-email");
     if(mailID){
       this.email = mailID;
       this.$store.state.email = mailID;
@@ -93,6 +94,9 @@ export default {
      ...mapGetters(["property", "timezone", "locale"])
   },
   methods: {
+    /**
+     * This method is to save Email entered by customer
+     */
     saveEmail: function() {
       this.emailErrors = [];
       if(this.checkform()){
@@ -100,6 +104,9 @@ export default {
         this.getProfile();
       }
     },
+    /**
+     * This Method is used to get the profile of the email entered
+     */
     getProfile: function () {
       let path = "/get_profile_by_email";
         let data = {
@@ -119,6 +126,9 @@ export default {
         console.log("Error: " + error);
       });
     },
+    /**
+     * Validation of the email
+     */
     checkform: function() {
       if (!this.email) {
         this.emailErrors.push('Please Enter your Email Address');

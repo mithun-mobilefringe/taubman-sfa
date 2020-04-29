@@ -28,11 +28,13 @@ export default {
           }).then(response => {
               this.property = response.data;
               this.$store.state.property = this.property;
-              this.$cookies.set("taubman-property", this.property);
+              
+              this.setCookies("taubman-property", this.property);
               this.getCharacters();
               this.$store.state.locale = this.$i18n.locale;
-              if(this.$cookies.get("taubman-"+ this.property.id +"-email")) {
-                this.$store.state.email = this.$cookies.get("taubman-"+ this.property.id +"-email");
+              let email = this.getCookies("taubman-"+ this.property.id +"-email");
+              if(email) {
+                this.$store.state.email = email;
                 this.$router.push('/badges');
               } else {
                 this.$router.push('/');

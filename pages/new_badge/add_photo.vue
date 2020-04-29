@@ -2,10 +2,8 @@
   <div>
     <!-- Cadet Builder -->
     <div>
-      <!-- Picture -->
-      <div id="box_cadet_upload_pic">
         <!-- Picture Upload -->
-        <div class="container box-home add-photo-container">
+        <div id="box_cadet_upload_pic" class="container box-home add-photo-container">
           <div class="step step-3"></div>
           <div class="col-sm-6 mx-auto">
             <h2 class="app-lead">Add a photo to use on : {{cadet.short_name}}'s badge.</h2>
@@ -72,8 +70,6 @@
           </div>
         </div>
         <!-- /Picture Upload -->
-      </div>
-      <!-- /Picture -->
     </div>
     <!-- /Cadet Builder -->
   </div>
@@ -166,5 +162,22 @@ export default {
   .add-photo-container {
     margin-top: 24px !important;
   }
+}
+@media (max-width: 414px) {
+  .add-photo-container {
+    margin-top: 39px !important;
+  }
+}
+@media (max-width: 768px) {
+  .add-photo-container {
+    margin-top: 86px !important;
+    justify-content: start;
+  }
+}
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+    .add-photo-container {
+      margin-top: 121px !important;
+      justify-content: start;
+    }
 }
 </style>
