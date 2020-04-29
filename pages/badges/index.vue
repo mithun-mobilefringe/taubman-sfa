@@ -6,7 +6,7 @@
         <div class="page-instructions col-sm-6 mx-auto text-center pb-2">
           <p>Visit {{property.name}} to print your badge and experience Santa's Flight Academy.</p>
           <div v-if="regHours.length>0">
-            <div v-for="(reghour,i) in regHours" class="mall-hours">
+            <div v-for="(reghour,i) in regHours" :key="i" class="mall-hours">
               <div class="mall-hours-days">{{days[i]}}:</div>
               <div>{{reghour}}</div>
             </div>
