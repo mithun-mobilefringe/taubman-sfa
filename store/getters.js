@@ -21,6 +21,7 @@ const getters = {
         return state.locale;
     },
     profile: state => state.profile,
+    subscribe: state => state.subscribe,
     badge: state => state.badge,
     email: state => state.email,
     is_new_profile: state => state.is_new_profile,

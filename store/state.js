@@ -10,6 +10,7 @@ const state = {
     headerfile: null,
     badge: null,
     email: null,
+    subscribe: false,
     profile: null,
     is_new_profile: false,
     charaters: [],

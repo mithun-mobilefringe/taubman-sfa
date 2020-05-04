@@ -301,7 +301,12 @@ export default {
       return this.badge.picture_url;
     },
     getSkipLineLink: function() {
-      return JSON.parse(this.property.meta_data).SFA.skip_line_link;
+      if(this.property.meta_data && JSON.parse(this.property.meta_data).SFA && JSON.parse(this.property.meta_data).SFA.skip_line_link) {
+        return JSON.parse(this.property.meta_data).SFA.skip_line_link;
+      } else {
+        return null;
+      }
+      
     }
   },
   beforeMount() {

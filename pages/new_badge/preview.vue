@@ -102,7 +102,8 @@ export default {
       "locale",
       "is_new_profile",
       "email",
-      "profile"
+      "profile",
+      "subscribe"
     ])
   },
   methods: {
@@ -186,6 +187,7 @@ export default {
       let path = "/add_profile";
       let data = {
         email: this.email,
+        subscribed: this.$store.state.subscribe,
         confirmation_code: this.getAlphaNumeric(8),
         badges: [badgeData]
       };

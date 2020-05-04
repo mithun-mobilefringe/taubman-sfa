@@ -101,6 +101,7 @@ export default {
       this.emailErrors = [];
       if(this.checkform()){
         this.$store.state.email = this.email;
+        this.$store.state.subscribe = this.optin;
         this.getProfile();
       }
     },

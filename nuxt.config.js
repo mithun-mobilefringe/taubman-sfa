@@ -2,8 +2,7 @@ const pkg = require('./package')
 
 const webpack = require('webpack')
 const axios = require('axios')
-const API_URL = "https://mallmaverick.com/api/v4/taubman/holiday"
-const MM_HOST = "https://halifaxcentre.mallmaverick.com"
+const MM_API_URL = "https://mallmaverickstaging.com/api/v4/taubman/holiday"
 export default {
     mode: 'spa',
     /*
@@ -28,8 +27,7 @@ export default {
     },
     /* Set your environment variables here */
     env: {
-        API_URL: "http://localhost:3000/taubman/holiday",
-        MM_HOST: MM_HOST
+        API_URL: MM_API_URL,
     },
     /*
      ** Customize the progress-bar color
